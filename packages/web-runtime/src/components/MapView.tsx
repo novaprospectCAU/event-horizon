@@ -304,16 +304,6 @@ export const MapView: React.FC<MapViewProps> = ({
           {coords.map(({ entity, sx, sy }) => (
             <circle key={entity.id} cx={sx} cy={sy} r={4} fill={getSystemColor(entity)} />
           ))}
-          {/* Viewport indicator */}
-          <rect
-            x={viewBox.x}
-            y={viewBox.y}
-            width={viewBox.w}
-            height={viewBox.h}
-            fill="rgba(88,166,255,0.1)"
-            stroke="#58a6ff"
-            strokeWidth={2}
-          />
         </svg>
       </div>
 
