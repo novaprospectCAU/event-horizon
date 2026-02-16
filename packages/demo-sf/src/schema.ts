@@ -1,16 +1,16 @@
 /**
- * SF 데모 월드 스키마 - 우주 문명 시뮬레이션 정의.
- * 세 세력이 외교, 무역, 전투를 통해 성계 지배권을 놓고 경쟁한다.
+ * 스타크래프트 데모 월드 스키마 - 코프룰루 구역 전쟁 시뮬레이션.
+ * 테란, 프로토스, 저그 세 종족이 은하의 패권을 다툰다.
  */
 
 import type { WorldSchema } from '@event-horizon/types';
 
 export const sfSchema: WorldSchema = {
-  id: 'sf-cosmos',
-  name: '우주 개척자',
+  id: 'sc-koprulu',
+  name: '코프룰루 전쟁',
   version: '0.1.0',
   description:
-    '세 세력이 외교, 무역, 첩보, 함대전을 통해 은하계 패권을 다투는 스페이스 오페라 시뮬레이션.',
+    '테란, 프로토스, 저그 세 종족이 코프룰루 구역의 패권을 놓고 외교, 전투, 정신 에너지를 통해 맞서는 전쟁 시뮬레이션.',
 
   components: [
     {
@@ -18,8 +18,8 @@ export const sfSchema: WorldSchema = {
       name: '세력 정보',
       description: '핵심 세력 데이터',
       fields: [
-        { name: 'ideology', type: 'string', description: '핵심 통치 이념' },
-        { name: 'government', type: 'string', description: '정부 형태' },
+        { name: 'ideology', type: 'string', description: '핵심 이념' },
+        { name: 'government', type: 'string', description: '통치 체제' },
         { name: 'homeSystemId', type: 'string', description: '본거지 성계' },
         { name: 'color', type: 'string', description: '세력 표시 색상' },
       ],
@@ -41,7 +41,7 @@ export const sfSchema: WorldSchema = {
       name: '성계',
       description: '성계 속성',
       fields: [
-        { name: 'starType', type: 'string', description: '항성 유형 (G, K, M 등)' },
+        { name: 'starType', type: 'string', description: '항성 유형' },
         { name: 'planets', type: 'number', description: '행성 수' },
         { name: 'controllerId', type: 'string', description: '지배 세력 ID' },
         { name: 'contested', type: 'boolean', defaultValue: false },
@@ -50,34 +50,34 @@ export const sfSchema: WorldSchema = {
     },
     {
       id: 'fleet',
-      name: '함대',
-      description: '군사 함대 편성',
+      name: '군단',
+      description: '군사 병력 편성',
       fields: [
-        { name: 'ships', type: 'number', description: '함선 수' },
-        { name: 'fleetType', type: 'string', description: '순찰 | 타격 | 방어 | 탐사' },
-        { name: 'commanderId', type: 'string', description: '함대 사령관 엔티티 ID' },
+        { name: 'ships', type: 'number', description: '병력 수' },
+        { name: 'fleetType', type: 'string', description: '공격 | 방어 | 정찰 | 원정' },
+        { name: 'commanderId', type: 'string', description: '지휘관 엔티티 ID' },
         { name: 'factionId', type: 'string', description: '소속 세력' },
       ],
     },
     {
       id: 'station',
-      name: '정거장',
-      description: '우주 정거장 또는 전초기지',
+      name: '기지',
+      description: '행성 기지 또는 전초기지',
       fields: [
-        { name: 'stationType', type: 'string', description: '무역 | 군사 | 연구 | 외교' },
+        { name: 'stationType', type: 'string', description: '사령부 | 군사 | 연구 | 외교' },
         { name: 'capacity', type: 'number', description: '운영 용량' },
         { name: 'ownerId', type: 'string', description: '소유 세력' },
       ],
     },
     {
       id: 'trade-route',
-      name: '교역로',
-      description: '두 성계 간의 교역로',
+      name: '보급로',
+      description: '두 성계 간의 보급로',
       fields: [
         { name: 'fromSystemId', type: 'string' },
         { name: 'toSystemId', type: 'string' },
-        { name: 'goods', type: 'string[]', description: '거래 물품 종류' },
-        { name: 'volume', type: 'number', description: '턴당 교역량' },
+        { name: 'goods', type: 'string[]', description: '보급 물자 종류' },
+        { name: 'volume', type: 'number', description: '턴당 보급량' },
       ],
     },
   ],
@@ -86,7 +86,7 @@ export const sfSchema: WorldSchema = {
     {
       id: 'faction',
       name: '세력',
-      description: '주요 정치 세력',
+      description: '주요 종족 세력',
       requiredComponents: ['faction-info'],
       optionalComponents: [],
       defaultTags: ['faction', 'major-power'],
@@ -94,7 +94,7 @@ export const sfSchema: WorldSchema = {
     {
       id: 'character',
       name: '캐릭터',
-      description: '은하계의 인물',
+      description: '코프룰루 구역의 인물',
       requiredComponents: ['character-info'],
       optionalComponents: [],
       defaultTags: ['character'],
@@ -110,8 +110,8 @@ export const sfSchema: WorldSchema = {
     },
     {
       id: 'fleet',
-      name: '함대',
-      description: '군사 함대',
+      name: '군단',
+      description: '군사 병력',
       requiredComponents: ['fleet'],
       optionalComponents: [],
       defaultTags: ['military', 'fleet'],
@@ -132,7 +132,7 @@ export const sfSchema: WorldSchema = {
     },
     {
       id: 'economic-power',
-      name: '경제력',
+      name: '자원 채굴력',
       category: 'faction',
       min: 0,
       max: 1000,
@@ -159,7 +159,7 @@ export const sfSchema: WorldSchema = {
     },
     {
       id: 'stability',
-      name: '내부 안정도',
+      name: '내부 결속력',
       category: 'faction',
       min: 0,
       max: 100,
@@ -195,10 +195,10 @@ export const sfSchema: WorldSchema = {
       defaultValue: 50,
       applicableTo: ['character'],
     },
-    // 함대 능력치
+    // 군단 능력치
     {
       id: 'fleet-morale',
-      name: '함대 사기',
+      name: '군단 사기',
       category: 'military',
       min: 0,
       max: 100,
@@ -208,7 +208,7 @@ export const sfSchema: WorldSchema = {
     },
     {
       id: 'fleet-strength',
-      name: '함대 전투력',
+      name: '군단 전투력',
       category: 'military',
       min: 0,
       max: 500,
@@ -227,7 +227,7 @@ export const sfSchema: WorldSchema = {
     },
     {
       id: 'resources',
-      name: '자원',
+      name: '미네랄/가스',
       category: 'system',
       min: 0,
       max: 1000,
@@ -259,8 +259,8 @@ export const sfSchema: WorldSchema = {
     },
     {
       id: 'trade',
-      name: '교역 관계',
-      description: '경제적 교역 관계',
+      name: '보급 관계',
+      description: '자원 교류 관계',
       directed: false,
       minWeight: 0,
       maxWeight: 100,
@@ -314,8 +314,8 @@ export const sfSchema: WorldSchema = {
     },
     {
       id: 'move-fleet',
-      name: '함대 이동',
-      description: '함대를 새로운 성계로 이동',
+      name: '군단 이동',
+      description: '군단을 새로운 성계로 이동',
       performerTypes: ['fleet'],
       targetTypes: ['system'],
       allowedPhases: ['player-action', 'npc-action'],
@@ -323,7 +323,7 @@ export const sfSchema: WorldSchema = {
     {
       id: 'attack',
       name: '공격',
-      description: '함대 또는 성계를 공격',
+      description: '적 군단 또는 성계를 공격',
       performerTypes: ['fleet'],
       targetTypes: ['fleet', 'system'],
       allowedPhases: ['player-action', 'npc-action'],
@@ -331,8 +331,8 @@ export const sfSchema: WorldSchema = {
     },
     {
       id: 'trade',
-      name: '교역 개시',
-      description: '교역로를 개설하거나 강화',
+      name: '자원 교역',
+      description: '보급로를 개설하거나 강화',
       performerTypes: ['faction'],
       targetTypes: ['faction'],
       allowedPhases: ['player-action', 'npc-action'],
@@ -358,15 +358,15 @@ export const sfSchema: WorldSchema = {
     {
       id: 'rally',
       name: '결집',
-      description: '안정도 또는 사기를 높이기 위한 지지 결집',
+      description: '결속력 또는 사기를 높이기 위한 지지 결집',
       performerTypes: ['character'],
       targetTypes: ['faction', 'fleet'],
       allowedPhases: ['player-action', 'npc-action'],
     },
     {
       id: 'build-fleet',
-      name: '함대 건조',
-      description: '새로운 함대 건조 명령',
+      name: '병력 생산',
+      description: '새로운 군단 편성 명령',
       performerTypes: ['faction'],
       targetTypes: ['system'],
       allowedPhases: ['player-action', 'npc-action'],
@@ -388,7 +388,7 @@ export const sfSchema: WorldSchema = {
   config: {
     aiMode: 'assist',
     timeUnit: 'cycle',
-    turnLabel: '은하 주기',
+    turnLabel: '작전 주기',
     activeModules: ['diplomacy', 'military', 'trade', 'espionage', 'narrative'],
     rngSeed: 42,
   },

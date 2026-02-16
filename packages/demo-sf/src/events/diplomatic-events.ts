@@ -1,14 +1,14 @@
 /**
- * SF 데모 이벤트 - 외교 및 정치 이벤트.
+ * 스타크래프트 데모 이벤트 - 외교 및 정치 이벤트.
  */
 
 import type { GameEvent } from '@event-horizon/types';
 
 export const diplomaticCrisis: GameEvent = {
   id: 'evt-diplomatic-crisis',
-  name: '외교 위기',
+  name: '프로토스-테란 갈등',
   description:
-    '두 주요 세력 간의 긴장이 극에 달했다. 외교적 사건이 전면전으로 비화될 위기에 처해 있다.',
+    '프로토스가 저그 감염 행성을 정화하기 위해 테란 식민지까지 궤도 폭격하겠다고 선언했다. 테란과의 긴장이 극에 달한다.',
   triggers: [
     {
       type: 'relation-threshold',
@@ -23,32 +23,32 @@ export const diplomaticCrisis: GameEvent = {
   choices: [
     {
       id: 'crisis-negotiate',
-      text: '외교 사절 파견',
-      description: '협상을 통해 긴장 완화를 시도한다.',
+      text: '태사다르에게 외교 채널 개설 요청',
+      description: '프로토스 온건파와 협상을 시도한다.',
       effects: [
         { type: 'modify-relation', relationTypeId: 'diplomatic', amount: 15 },
         { type: 'modify-stat', entityTag: 'terran', statId: 'influence', amount: 10 },
       ],
-      resultText: '사절이 긴장을 완화하는 데 성공했다. 적어도 당분간은.',
+      resultText: '태사다르가 의회를 설득하여 정화 작전을 일시 중단시켰다. 긴장은 완화되었지만 알다리스는 불만이다.',
     },
     {
       id: 'crisis-threaten',
-      text: '무력 시위',
-      description: '군사력을 전개하여 힘을 과시한다.',
+      text: '방어 함대 전진 배치',
+      description: '궤도 폭격에 맞서 군사적 대응을 준비한다.',
       effects: [
         { type: 'modify-stat', entityTag: 'terran', statId: 'military-power', amount: 20 },
         { type: 'modify-relation', relationTypeId: 'diplomatic', amount: -10 },
       ],
-      resultText: '무력 시위는 명확한 메시지를 전달했지만, 관계의 균열은 더 깊어졌다.',
+      resultText: '프로토스는 테란의 결의를 확인했다. 정화 작전은 보류되었으나 관계는 더 악화되었다.',
     },
     {
       id: 'crisis-ignore',
-      text: '자연스럽게 지나가길 기다린다',
-      description: '내부 문제에 집중하고 긴장이 자연히 가라앉기를 바란다.',
+      text: '식민지 주민 대피에 집중',
+      description: '충돌을 피하고 인명 구출에 집중한다.',
       effects: [
         { type: 'modify-stat', entityTag: 'terran', statId: 'stability', amount: 5 },
       ],
-      resultText: '직접적인 대립을 피하기로 했다. 이것이 현명한 선택이었을지는 시간이 말해줄 것이다.',
+      resultText: '주민 대피는 성공했지만, 프로토스의 정화 작전을 막지 못했다. 식민지는 잿더미가 되었다.',
     },
   ],
   cooldown: 5,
@@ -59,9 +59,9 @@ export const diplomaticCrisis: GameEvent = {
 
 export const tradeAgreement: GameEvent = {
   id: 'evt-trade-agreement',
-  name: '교역 협정 기회',
+  name: '자원 공유 협정 기회',
   description:
-    '중립 무역 길드가 여러 세력에 이로운 교역 협정을 제안했다.',
+    '변경 행성의 광산 조합이 세력을 초월한 자원 공유 협정을 제안했다.',
   triggers: [
     { type: 'turn-reached', turn: 3 },
     {
@@ -76,17 +76,17 @@ export const tradeAgreement: GameEvent = {
     {
       id: 'trade-accept',
       text: '협정 수락',
-      description: '교역 협정에 서명하고 경제 협력을 강화한다.',
+      description: '자원 공유에 합의하고 보급 라인을 확보한다.',
       effects: [
         { type: 'modify-relation', relationTypeId: 'trade', amount: 25 },
         { type: 'modify-stat', entityTag: 'terran', statId: 'economic-power', amount: 30 },
       ],
-      resultText: '교역 협정이 체결되었다. 자금이 흐르고 번영이 찾아온다.',
+      resultText: '미네랄과 베스핀 가스가 안정적으로 흘러든다. 전쟁 물자 생산이 크게 늘어났다.',
     },
     {
       id: 'trade-counter',
-      text: '더 나은 조건으로 역제안',
-      description: '더 유리한 조건을 밀어붙이지만, 협상 결렬 위험이 있다.',
+      text: '더 유리한 조건으로 역제안',
+      description: '우리 쪽에 유리한 비율을 요구한다.',
       conditions: [
         { type: 'stat-threshold', entityTag: 'terran', statId: 'influence', comparison: 'gte', value: 40 },
       ],
@@ -94,16 +94,16 @@ export const tradeAgreement: GameEvent = {
         { type: 'modify-stat', entityTag: 'terran', statId: 'economic-power', amount: 50 },
         { type: 'modify-stat', entityTag: 'terran', statId: 'influence', amount: -5 },
       ],
-      resultText: '협상단이 탁월한 조건을 확보했다. 상대방은 불만이지만.',
+      resultText: '강한 입장으로 유리한 조건을 이끌어냈다. 다른 참여자들은 불만스러워한다.',
     },
     {
       id: 'trade-reject',
       text: '제안 거절',
-      description: '경제적 독립을 유지한다.',
+      description: '독자적 자원 확보를 유지한다.',
       effects: [
         { type: 'modify-stat', entityTag: 'terran', statId: 'stability', amount: 5 },
       ],
-      resultText: '교역 협정을 거절하고 자급자족을 선택했다.',
+      resultText: '자급자족을 선택했다. 보급은 부족하지만 누구에게도 약점을 보이지 않았다.',
     },
   ],
   cooldown: 8,
@@ -113,8 +113,8 @@ export const tradeAgreement: GameEvent = {
 
 export const allianceProposal: GameEvent = {
   id: 'evt-alliance-proposal',
-  name: '동맹 제안',
-  description: '한 세력이 공동의 위협에 대한 정식 동맹을 제안한다.',
+  name: '대저그 동맹 제안',
+  description: '저그의 위협이 커지자, 한 세력이 공동 대응을 위한 정식 동맹을 제안한다.',
   triggers: [
     {
       type: 'relation-threshold',
@@ -124,7 +124,7 @@ export const allianceProposal: GameEvent = {
     },
     {
       type: 'stat-threshold',
-      entityTag: 'kethari',
+      entityTag: 'zerg',
       statId: 'military-power',
       comparison: 'gte',
       value: 180,
@@ -139,7 +139,7 @@ export const allianceProposal: GameEvent = {
         { type: 'modify-relation', relationTypeId: 'diplomatic', amount: 30 },
         { type: 'set-tag', entityTag: 'terran', tag: 'allied' },
       ],
-      resultText: '새로운 동맹이 결성되었다. 함께라면 더 강하다.',
+      resultText: '종족을 초월한 동맹이 결성되었다. 저그에 맞서 함께 싸운다.',
     },
     {
       id: 'alliance-decline',
@@ -147,7 +147,7 @@ export const allianceProposal: GameEvent = {
       effects: [
         { type: 'modify-relation', relationTypeId: 'diplomatic', amount: -10 },
       ],
-      resultText: '독립을 유지하는 대가로 잠재적 동맹의 호의를 잃었다.',
+      resultText: '독자 노선을 유지한다. 동맹 제안을 한 세력은 실망했다.',
     },
   ],
   cooldown: 10,

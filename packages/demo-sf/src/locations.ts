@@ -1,20 +1,20 @@
 /**
- * SF 데모 장소 - 성계와 주요 지역.
+ * 스타크래프트 데모 장소 - 코프룰루 구역의 주요 성계.
  */
 
 import type { Entity } from '@event-horizon/types';
 
 export const systemSol: Entity = {
-  id: 'system-sol',
+  id: 'system-korhal',
   typeId: 'system',
-  name: '태양계',
+  name: '코르할',
   tags: ['location', 'system', 'terran-space', 'capital'],
   components: {
     'star-system': {
       defId: 'star-system',
       values: {
         starType: 'G2V',
-        planets: 8,
+        planets: 4,
         controllerId: 'faction-terran',
         contested: false,
         coordinates: { x: 0, y: 0 },
@@ -23,33 +23,65 @@ export const systemSol: Entity = {
     station: {
       defId: 'station',
       values: {
-        stationType: 'diplomatic',
+        stationType: 'military',
         capacity: 500,
         ownerId: 'faction-terran',
       },
     },
   },
   stats: {
-    population: 8000,
-    resources: 200,
-    'defense-level': 80,
+    population: 6000,
+    resources: 250,
+    'defense-level': 85,
   },
 };
 
 export const systemKethar: Entity = {
-  id: 'system-kethar',
+  id: 'system-aiur',
   typeId: 'system',
-  name: '케타르 프라임',
-  tags: ['location', 'system', 'kethari-space', 'capital'],
+  name: '아이어',
+  tags: ['location', 'system', 'protoss-space', 'capital'],
   components: {
     'star-system': {
       defId: 'star-system',
       values: {
-        starType: 'K1V',
-        planets: 5,
-        controllerId: 'faction-kethari',
+        starType: 'F5V',
+        planets: 6,
+        controllerId: 'faction-protoss',
         contested: false,
-        coordinates: { x: -120, y: 80 },
+        coordinates: { x: 100, y: 80 },
+      },
+    },
+    station: {
+      defId: 'station',
+      values: {
+        stationType: 'military',
+        capacity: 600,
+        ownerId: 'faction-protoss',
+      },
+    },
+  },
+  stats: {
+    population: 8000,
+    resources: 300,
+    'defense-level': 90,
+  },
+};
+
+export const systemNexus: Entity = {
+  id: 'system-char',
+  typeId: 'system',
+  name: '차',
+  tags: ['location', 'system', 'zerg-space', 'capital'],
+  components: {
+    'star-system': {
+      defId: 'star-system',
+      values: {
+        starType: 'M2V',
+        planets: 2,
+        controllerId: 'faction-zerg',
+        contested: false,
+        coordinates: { x: -80, y: 100 },
       },
     },
     station: {
@@ -57,31 +89,103 @@ export const systemKethar: Entity = {
       values: {
         stationType: 'military',
         capacity: 400,
-        ownerId: 'faction-kethari',
+        ownerId: 'faction-zerg',
       },
     },
   },
   stats: {
-    population: 5000,
-    resources: 300,
-    'defense-level': 90,
+    population: 0,
+    resources: 500,
+    'defense-level': 95,
   },
 };
 
-export const systemNexus: Entity = {
-  id: 'system-nexus',
+export const systemHaven: Entity = {
+  id: 'system-marsara',
   typeId: 'system',
-  name: '넥서스 프라임',
-  tags: ['location', 'system', 'synthesis-space', 'capital'],
+  name: '마 사라',
+  tags: ['location', 'system', 'terran-space', 'colony'],
   components: {
     'star-system': {
       defId: 'star-system',
       values: {
-        starType: 'F5V',
+        starType: 'G8V',
         planets: 3,
-        controllerId: 'faction-synthesis',
+        controllerId: 'faction-terran',
+        contested: true,
+        coordinates: { x: -30, y: 20 },
+      },
+    },
+  },
+  stats: {
+    population: 2000,
+    resources: 150,
+    'defense-level': 25,
+  },
+};
+
+export const systemForge: Entity = {
+  id: 'system-tarsonis',
+  typeId: 'system',
+  name: '타소니스',
+  tags: ['location', 'system', 'terran-space', 'destroyed'],
+  components: {
+    'star-system': {
+      defId: 'star-system',
+      values: {
+        starType: 'G5V',
+        planets: 5,
+        controllerId: '',
+        contested: true,
+        coordinates: { x: -20, y: -10 },
+      },
+    },
+  },
+  stats: {
+    population: 500,
+    resources: 200,
+    'defense-level': 10,
+  },
+};
+
+export const systemFrontier: Entity = {
+  id: 'system-antiga',
+  typeId: 'system',
+  name: '안티가 프라임',
+  tags: ['location', 'system', 'contested', 'border'],
+  components: {
+    'star-system': {
+      defId: 'star-system',
+      values: {
+        starType: 'K5V',
+        planets: 4,
+        controllerId: '',
+        contested: true,
+        coordinates: { x: -60, y: 40 },
+      },
+    },
+  },
+  stats: {
+    population: 1500,
+    resources: 180,
+    'defense-level': 20,
+  },
+};
+
+export const systemDeepReach: Entity = {
+  id: 'system-shakuras',
+  typeId: 'system',
+  name: '샤쿠라스',
+  tags: ['location', 'system', 'protoss-space', 'dark-templar'],
+  components: {
+    'star-system': {
+      defId: 'star-system',
+      values: {
+        starType: 'K1V',
+        planets: 3,
+        controllerId: 'faction-protoss',
         contested: false,
-        coordinates: { x: 100, y: 100 },
+        coordinates: { x: 80, y: 40 },
       },
     },
     station: {
@@ -89,150 +193,38 @@ export const systemNexus: Entity = {
       values: {
         stationType: 'research',
         capacity: 300,
-        ownerId: 'faction-synthesis',
-      },
-    },
-  },
-  stats: {
-    population: 2000,
-    resources: 150,
-    'defense-level': 70,
-  },
-};
-
-export const systemHaven: Entity = {
-  id: 'system-haven',
-  typeId: 'system',
-  name: '헤이븐 정거장',
-  tags: ['location', 'system', 'neutral', 'trade-hub'],
-  components: {
-    'star-system': {
-      defId: 'star-system',
-      values: {
-        starType: 'G8V',
-        planets: 4,
-        controllerId: '',
-        contested: false,
-        coordinates: { x: -20, y: 60 },
-      },
-    },
-    station: {
-      defId: 'station',
-      values: {
-        stationType: 'trade',
-        capacity: 600,
-        ownerId: '',
+        ownerId: 'faction-protoss',
       },
     },
   },
   stats: {
     population: 3000,
-    resources: 400,
-    'defense-level': 30,
+    resources: 200,
+    'defense-level': 70,
   },
 };
 
-export const systemForge: Entity = {
-  id: 'system-forge',
+export const systemAurora: Entity = {
+  id: 'system-braxis',
   typeId: 'system',
-  name: '대장간',
-  tags: ['location', 'system', 'kethari-space', 'military'],
-  components: {
-    'star-system': {
-      defId: 'star-system',
-      values: {
-        starType: 'M2V',
-        planets: 2,
-        controllerId: 'faction-kethari',
-        contested: false,
-        coordinates: { x: -80, y: 40 },
-      },
-    },
-    station: {
-      defId: 'station',
-      values: {
-        stationType: 'military',
-        capacity: 350,
-        ownerId: 'faction-kethari',
-      },
-    },
-  },
-  stats: {
-    population: 1500,
-    resources: 500,
-    'defense-level': 75,
-  },
-};
-
-export const systemFrontier: Entity = {
-  id: 'system-frontier',
-  typeId: 'system',
-  name: '변경지대',
-  tags: ['location', 'system', 'contested', 'border'],
-  components: {
-    'star-system': {
-      defId: 'star-system',
-      values: {
-        starType: 'K5V',
-        planets: 6,
-        controllerId: '',
-        contested: true,
-        coordinates: { x: -60, y: 20 },
-      },
-    },
-  },
-  stats: {
-    population: 500,
-    resources: 250,
-    'defense-level': 15,
-  },
-};
-
-export const systemDeepReach: Entity = {
-  id: 'system-deepreach',
-  typeId: 'system',
-  name: '심연',
-  tags: ['location', 'system', 'unexplored', 'precursor'],
+  name: '브락시스',
+  tags: ['location', 'system', 'contested', 'ice-world'],
   components: {
     'star-system': {
       defId: 'star-system',
       values: {
         starType: 'A3V',
-        planets: 7,
+        planets: 2,
         controllerId: '',
-        contested: false,
-        coordinates: { x: 60, y: -40 },
+        contested: true,
+        coordinates: { x: 40, y: -40 },
       },
     },
   },
   stats: {
-    population: 0,
-    resources: 800,
-    'defense-level': 0,
-  },
-};
-
-export const systemAurora: Entity = {
-  id: 'system-aurora',
-  typeId: 'system',
-  name: '오로라',
-  tags: ['location', 'system', 'terran-space'],
-  components: {
-    'star-system': {
-      defId: 'star-system',
-      values: {
-        starType: 'G5V',
-        planets: 5,
-        controllerId: 'faction-terran',
-        contested: false,
-        coordinates: { x: 40, y: -20 },
-      },
-    },
-  },
-  stats: {
-    population: 4000,
-    resources: 180,
-    'defense-level': 45,
+    population: 800,
+    resources: 350,
+    'defense-level': 15,
   },
 };
 
