@@ -94,6 +94,28 @@ export const kerrigan: Entity = {
   locationId: 'system-korhal',
 };
 
+export const player: Entity = {
+  id: 'char-player',
+  typeId: 'character',
+  name: '마 사라 민병대 대장',
+  tags: ['character', 'military', 'terran', 'militia', 'player'],
+  components: {
+    'character-info': {
+      defId: 'character-info',
+      values: {
+        species: '인간',
+        role: '마 사라 민병대 대장',
+        factionId: 'faction-terran',
+        backstory:
+          '보안관 레이너의 오른팔로, 마 사라 변경 식민지의 치안을 담당하는 민병대 대장. 정규군 출신이 아닌 식민지 태생의 군인으로, 주민들의 안전을 최우선으로 여긴다.',
+        portrait: 'militia-captain',
+      },
+    },
+  },
+  stats: { loyalty: 60, competence: 65, ambition: 50, 'psionic-power': 0 },
+  locationId: 'system-marsara',
+};
+
 // ─── 프로토스 캐릭터 ───
 
 export const tassadar: Entity = {
@@ -235,6 +257,7 @@ export const characters: Entity[] = [
   mengsk,
   duke,
   kerrigan,
+  player,
   tassadar,
   zeratul,
   fenix,

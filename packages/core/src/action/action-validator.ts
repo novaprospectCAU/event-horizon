@@ -80,6 +80,13 @@ export class ActionValidator {
       );
     }
 
+    // Check player can only act as their character
+    if (action.phase === 'player-action' && state.playerEntityId) {
+      if (action.performerId !== state.playerEntityId) {
+        errors.push(`Player can only perform actions as '${state.playerEntityId}'`);
+      }
+    }
+
     return { valid: errors.length === 0, errors };
   }
 

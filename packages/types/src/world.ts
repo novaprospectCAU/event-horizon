@@ -39,6 +39,7 @@ export interface WorldState {
   readonly eventHistory: readonly EventRecord[];
   readonly entityDeltas: readonly EntityDelta[];
   readonly relationDeltas: readonly RelationDelta[];
+  readonly playerEntityId?: string;
   readonly rng: RNGState;
 }
 

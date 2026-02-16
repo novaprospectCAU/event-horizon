@@ -565,7 +565,7 @@ export const scenes: Scene[] = [
     name: '첫 접촉',
     description: '마 사라 보안관 레이너가 식민지에서 처음으로 저그와 조우한다. 이후 프로토스가 정화를 시작한다.',
     locationId: 'system-marsara',
-    participantIds: ['char-raynor', 'char-mengsk'],
+    participantIds: ['char-raynor', 'char-mengsk', 'char-player'],
     dialogue: signalsBriefingDialogue,
     narrativeText:
       '마 사라 식민지 보안관 짐 레이너는 주민들의 실종 신고를 조사하던 중, 외곽 농장에서 끔찍한 광경을 목격한다. 알 수 없는 생물체가 주민들을 습격하고 있다. 이것이 저그와의 첫 조우다. 연합에 긴급 지원을 요청하지만 묵살당하고, 이윽고 프로토스 함대가 궤도에 나타나 행성 표면을 불태운다. 저그를 처리하기 위해... 인간까지 함께.',
@@ -576,7 +576,7 @@ export const scenes: Scene[] = [
     name: '코랄의 후예',
     description: '레이너가 멩스크의 반란군에 합류한다.',
     locationId: 'system-antiga',
-    participantIds: ['char-raynor', 'char-mengsk', 'char-kerrigan'],
+    participantIds: ['char-raynor', 'char-mengsk', 'char-kerrigan', 'char-player'],
     narrativeText:
       '"연합은 여러분의 행성을 저그에게 팔아넘겼습니다! 마 사라의 주민들이 도움을 요청했을 때, 연합은 그들을 버렸소!" 멩스크의 선동적인 연설이 울려 퍼진다. "연합은 썩었소, 레이너 보안관. 우리 코랄의 후예가 새로운 질서를 만들 것이오." 연합에 대한 환멸로 가득 찬 레이너는 고개를 끄덕인다. 케리건이 옆에서 조용히 지켜본다.',
     aiNarrative: true,
@@ -586,7 +586,7 @@ export const scenes: Scene[] = [
     name: '안티가 프라임 해방',
     description: '사이오닉 방출기의 첫 사용.',
     locationId: 'system-antiga',
-    participantIds: ['char-raynor', 'char-kerrigan', 'char-mengsk'],
+    participantIds: ['char-raynor', 'char-kerrigan', 'char-mengsk', 'char-player'],
     narrativeText:
       '사이오닉 방출기가 활성화되자, 연합군 기지 주변에 저그가 몰려든다. 방출기의 위력에 케리건은 불안한 표정을 짓지만, 멩스크는 만족스러운 미소를 감추지 않는다.',
     aiNarrative: true,
@@ -599,7 +599,7 @@ export const scenes: Scene[] = [
     name: '타소니스 배신',
     description: '멩스크의 계략으로 타소니스가 저그에게 함락되고 케리건이 버려진다.',
     locationId: 'system-tarsonis',
-    participantIds: ['char-mengsk', 'char-kerrigan', 'char-raynor'],
+    participantIds: ['char-mengsk', 'char-kerrigan', 'char-raynor', 'char-player'],
     dialogue: tarsonisBetrayalDialogue,
     narrativeText:
       '사이오닉 방출기가 활성화되자, 수억의 저그가 타소니스로 쏟아져 들어온다. 하늘이 뮤탈리스크로 뒤덮이고, 연합의 수도는 지옥으로 변한다. 그리고 멩스크의 입에서 냉혹한 명령이 떨어진다. "돌아갈 준비해."',
@@ -660,7 +660,7 @@ export const scenes: Scene[] = [
     name: '멩스크의 야망',
     description: '코랄의 후예의 세력이 급팽창한다.',
     locationId: 'system-korhal',
-    participantIds: ['char-mengsk', 'char-duke'],
+    participantIds: ['char-mengsk', 'char-duke', 'char-player'],
     narrativeText:
       '코르할의 전략 회의실. 멩스크가 거대한 홀로그램 성계 지도 앞에 서 있다. "연합은 죽어가고 있소, 듀크 장군. 우리가 그 자리를 차지할 때가 왔소." 듀크가 경례한다.',
     aiNarrative: true,
@@ -670,7 +670,7 @@ export const scenes: Scene[] = [
     name: '타소니스 대학살',
     description: '사이오닉 방출기로 타소니스 20억 인구가 희생된다.',
     locationId: 'system-tarsonis',
-    participantIds: ['char-mengsk', 'char-raynor'],
+    participantIds: ['char-mengsk', 'char-raynor', 'char-player'],
     narrativeText:
       '타소니스 궤도에서 바라본 행성 표면은 저그의 점막으로 뒤덮여 가고 있다. 도시들이 하나둘 불꽃 속에 사라진다. 20억의 비명이 우주의 적막 속에 흡수된다. 멩스크의 얼굴에는 어떤 감정도 없다.',
     aiNarrative: true,
@@ -680,7 +680,7 @@ export const scenes: Scene[] = [
     name: '레이너의 결별',
     description: '레이너가 멩스크와 결별한다.',
     locationId: 'system-korhal',
-    participantIds: ['char-raynor', 'char-mengsk'],
+    participantIds: ['char-raynor', 'char-mengsk', 'char-player'],
     dialogue: raynorBreakDialogue,
     narrativeText:
       '"난 널 끌어내리겠다, 멩스크." 레이너의 선언이 모든 주파수로 방송된다. 히페리온이 코르할 궤도를 이탈하며 자치령 깃발을 내린다. "지옥에나 떨어져!"',

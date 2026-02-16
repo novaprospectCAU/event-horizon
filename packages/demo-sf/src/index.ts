@@ -3,7 +3,7 @@
  *
  * SC1 오리지널 3에피소드 기반 콘텐츠:
  * - 3 종족 (테란 자치령, 프로토스, 저그 군단)
- * - 10 주요 캐릭터 + 10 NPC 행동 프로필
+ * - 11 주요 캐릭터 (플레이어 포함) + 10 NPC 행동 프로필
  * - 8 성계
  * - 20+ 이벤트 (외교, 군사, 탐사, 내부)
  * - 3 스토리 아크 (아이어 침공 8단계, 자치령 횡포 4단계, 빛과 어둠의 화합 5단계)
@@ -19,6 +19,7 @@ export {
   mengsk,
   duke,
   kerrigan,
+  player,
   tassadar,
   zeratul,
   fenix,
@@ -77,6 +78,9 @@ const initialRelations: Relation[] = [
   { id: 'rel-30', typeId: 'personal', sourceId: 'char-artanis', targetId: 'char-tassadar', weight: 75, createdTurn: 0, modifiedTurn: 0 },
   { id: 'rel-31', typeId: 'personal', sourceId: 'char-aldaris', targetId: 'char-zeratul', weight: -70, createdTurn: 0, modifiedTurn: 0 },
   { id: 'rel-32', typeId: 'personal', sourceId: 'char-fenix', targetId: 'char-aldaris', weight: 20, createdTurn: 0, modifiedTurn: 0 },
+  // 플레이어 캐릭터 관계
+  { id: 'rel-33', typeId: 'personal', sourceId: 'char-player', targetId: 'char-raynor', weight: 50, createdTurn: 0, modifiedTurn: 0 },
+  { id: 'rel-34', typeId: 'loyalty-to', sourceId: 'char-player', targetId: 'faction-terran', weight: 60, createdTurn: 0, modifiedTurn: 0 },
 ];
 
 /** Build the entity map from all entity arrays */
@@ -103,6 +107,7 @@ const initialTurnState: TurnState = {
 
 /** Complete initial world state for the SC1 demo */
 export const sfWorldState: WorldState = {
+  playerEntityId: 'char-player',
   schema: sfSchema,
   turn: initialTurnState,
   entities: buildEntityMap([...factions, ...characters, ...locations]),
