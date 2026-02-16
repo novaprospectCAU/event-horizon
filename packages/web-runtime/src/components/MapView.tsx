@@ -68,9 +68,6 @@ export const MapView: React.FC<MapViewProps> = ({
   const svgRef = useRef<SVGSVGElement>(null);
   const dragRef = useRef<{ startX: number; startY: number; startVB: ViewBox } | null>(null);
 
-  // Minimap drag state
-  const minimapRef = useRef<SVGSVGElement>(null);
-  const miniDragRef = useRef<boolean>(false);
 
   const MIN_ZOOM = 0.3; // viewBox can be 30% of full = zoomed in a lot
   const MAX_ZOOM = 1.0; // 100% = full view
@@ -154,50 +151,6 @@ export const MapView: React.FC<MapViewProps> = ({
     [viewBox, clampViewBox],
   );
 
-  // --- Minimap interaction ---
-  const minimapW = 120;
-  const minimapH = Math.round((height / width) * minimapW);
-
-  const moveViewBoxToMinimap = useCallback(
-    (clientX: number, clientY: number) => {
-      const mini = minimapRef.current;
-      if (!mini) return;
-      const rect = mini.getBoundingClientRect();
-      const mx = ((clientX - rect.left) / rect.width) * fullVB.w;
-      const my = ((clientY - rect.top) / rect.height) * fullVB.h;
-      setViewBox((prev) =>
-        clampViewBox({ x: mx - prev.w / 2, y: my - prev.h / 2, w: prev.w, h: prev.h }),
-      );
-    },
-    [fullVB, clampViewBox],
-  );
-
-  const onMiniPointerDown = useCallback(
-    (e: React.PointerEvent) => {
-      if (e.button !== 0) return;
-      const mini = minimapRef.current;
-      if (!mini) return;
-      mini.setPointerCapture(e.pointerId);
-      miniDragRef.current = true;
-      moveViewBoxToMinimap(e.clientX, e.clientY);
-    },
-    [moveViewBoxToMinimap],
-  );
-
-  const onMiniPointerMove = useCallback(
-    (e: React.PointerEvent) => {
-      if (!miniDragRef.current) return;
-      moveViewBoxToMinimap(e.clientX, e.clientY);
-    },
-    [moveViewBoxToMinimap],
-  );
-
-  const onMiniPointerUp = useCallback((e: React.PointerEvent) => {
-    const mini = minimapRef.current;
-    if (mini) mini.releasePointerCapture(e.pointerId);
-    miniDragRef.current = false;
-  }, []);
-
   // Reset zoom
   const onResetZoom = useCallback(() => {
     setViewBox(fullVB);
@@ -275,47 +228,6 @@ export const MapView: React.FC<MapViewProps> = ({
           );
         })}
       </svg>
-
-      {/* Minimap */}
-      <div
-        style={{
-          position: 'absolute',
-          bottom: 8,
-          right: 8,
-          border: '1px solid #30363d',
-          borderRadius: 4,
-          overflow: 'hidden',
-          background: '#0a0a1a',
-          opacity: isZoomed ? 1 : 0.4,
-          transition: 'opacity 0.2s',
-        }}
-      >
-        <svg
-          ref={minimapRef}
-          width={minimapW}
-          height={minimapH}
-          viewBox={`0 0 ${fullVB.w} ${fullVB.h}`}
-          style={{ display: 'block', cursor: 'crosshair' }}
-          onPointerDown={onMiniPointerDown}
-          onPointerMove={onMiniPointerMove}
-          onPointerUp={onMiniPointerUp}
-          onPointerLeave={onMiniPointerUp}
-        >
-          {coords.map(({ entity, sx, sy }) => (
-            <circle key={entity.id} cx={sx} cy={sy} r={4} fill={getSystemColor(entity)} />
-          ))}
-          {/* Viewport indicator */}
-          <rect
-            x={viewBox.x}
-            y={viewBox.y}
-            width={viewBox.w}
-            height={viewBox.h}
-            fill="rgba(88,166,255,0.1)"
-            stroke="#58a6ff"
-            strokeWidth={2}
-          />
-        </svg>
-      </div>
 
       {/* Reset zoom button */}
       {isZoomed && (
