@@ -4,18 +4,18 @@
 
 import type { Entity } from '@event-horizon/types';
 
-/** 테란 자치령 - 인간, 군사 독재, 기술과 화력 중심 */
+/** 테란 자치령 - 연합 붕괴 후 멩스크가 세운 군사 독재 정권. 게임 초기에는 테란 연합이 코프룰루 구역의 테란을 통치하고 있었으나, 코랄의 후예의 반란으로 붕괴. */
 export const terranDominion: Entity = {
   id: 'faction-terran',
   typeId: 'faction',
   name: '테란 자치령',
-  tags: ['faction', 'major-power', 'terran'],
+  tags: ['faction', 'major-power', 'terran', 'confederacy-era'],
   components: {
     'faction-info': {
       defId: 'faction-info',
       values: {
-        ideology: '인류 생존주의',
-        government: '군사 독재 제국',
+        ideology: '인류 우월주의와 군사적 질서',
+        government: '군사 독재 (전신: 테란 연합 과두정)',
         homeSystemId: 'system-korhal',
         color: '#3B82F6',
       },
@@ -30,18 +30,18 @@ export const terranDominion: Entity = {
   },
 };
 
-/** 프로토스 - 고대 종족, 사이오닉 기술, 명예와 전통 중시 */
+/** 프로토스 - 고대 종족, 사이오닉 기술, 명예와 전통 중시. 칼라이(칼라를 따르는 자)와 네라짐(암흑 기사) 분파로 분열되어 있다. */
 export const protoss: Entity = {
   id: 'faction-protoss',
   typeId: 'faction',
   name: '프로토스',
-  tags: ['faction', 'major-power', 'protoss'],
+  tags: ['faction', 'major-power', 'protoss', 'khalai'],
   components: {
     'faction-info': {
       defId: 'faction-info',
       values: {
         ideology: '칼라의 길',
-        government: '의회 신정정치',
+        government: '재판관 계급 중심 의회 (칼라이 계급 구조: 재판관·기사·장인)',
         homeSystemId: 'system-aiur',
         color: '#EAB308',
       },
@@ -56,7 +56,7 @@ export const protoss: Entity = {
   },
 };
 
-/** 저그 군단 - 생물학적 집합체, 동화와 진화, 초월체의 의지 */
+/** 저그 군단 - 생물학적 집합체, 동화와 진화, 초월체의 의지. 초월체 아래 정신체들이 각 군단을 지휘하는 위계적 집합 의식 구조. */
 export const zergSwarm: Entity = {
   id: 'faction-zerg',
   typeId: 'faction',
@@ -66,8 +66,8 @@ export const zergSwarm: Entity = {
     'faction-info': {
       defId: 'faction-info',
       values: {
-        ideology: '완벽한 진화',
-        government: '집합 의식 (초월체)',
+        ideology: '완벽한 유전적 순수성 (Purity of Essence)',
+        government: '초월체-정신체 위계 집합 의식',
         homeSystemId: 'system-char',
         color: '#9333EA',
       },

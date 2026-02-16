@@ -160,7 +160,7 @@ export const protossPurification: GameEvent = {
   id: 'evt-protoss-purification',
   name: '프로토스의 정화',
   description:
-    '프로토스 함대가 저그에 감염된 테란 식민지를 궤도에서 폭격하여 정화한다. 무고한 테란 시민들이 희생된다.',
+    '프로토스 함대가 저그에 감염된 마 사라 식민지를 궤도에서 폭격하여 정화한다. 무고한 테란 시민들이 희생된다.',
   triggers: [
     { type: 'turn-reached', turn: 3 },
     {

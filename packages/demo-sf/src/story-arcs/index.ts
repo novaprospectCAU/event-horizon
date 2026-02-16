@@ -9,4 +9,6 @@ export {
   raynorBreakDialogue,
   tassadarTrialDialogue,
   tassadarSacrificeDialogue,
+  overmindMonologueDialogue,
+  queenAwakeningDialogue,
 } from './main-arc.js';

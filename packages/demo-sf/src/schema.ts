@@ -195,6 +195,15 @@ export const sfSchema: WorldSchema = {
       defaultValue: 50,
       applicableTo: ['character'],
     },
+    {
+      id: 'psionic-power',
+      name: '사이오닉 능력',
+      category: 'character',
+      min: 0,
+      max: 100,
+      defaultValue: 0,
+      applicableTo: ['character'],
+    },
     // 군단 능력치
     {
       id: 'fleet-morale',

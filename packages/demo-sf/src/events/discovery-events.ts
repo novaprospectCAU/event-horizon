@@ -69,7 +69,7 @@ export const precursorArtifact: GameEvent = {
 export const anomalyDetected: GameEvent = {
   id: 'evt-anomaly',
   name: '사이오닉 이상 현상 감지',
-  description: '과학선이 안티가 프라임 인근에서 강력한 사이오닉 에너지 방출을 감지했다. 저그의 새로운 진화일 수도 있다.',
+  description: '과학선이 안티가 프라임 인근에서 강력한 사이오닉 에너지 방출을 감지했다. 저그의 새로운 진화일 수도 있고, 케리건의 잠재된 사이오닉 능력이 공명하는 것일 수도 있다.',
   triggers: [
     { type: 'random-chance', chance: 0.1 },
     { type: 'turn-reached', turn: 3 },
@@ -223,4 +223,51 @@ export const darkTemplarDiscovery: GameEvent = {
   tags: ['discovery', 'protoss', 'dark-templar'],
 };
 
-export const discoveryEvents: GameEvent[] = [precursorArtifact, anomalyDetected, firstContact, zeratulCerebrateKill, darkTemplarDiscovery];
+export const psiEmitterFound: GameEvent = {
+  id: 'evt-psi-emitter-found',
+  name: '사이오닉 방출기 발견',
+  description:
+    '연합의 극비 연구시설에서 사이오닉 방출기 프로토타입을 발견했다. 이 장치는 저그를 특정 위치로 유인할 수 있는 위험한 무기다.',
+  triggers: [
+    { type: 'turn-reached', turn: 5 },
+  ],
+  effects: [
+    { type: 'set-tag', entityId: 'faction-terran', tag: 'psi-emitter-acquired' },
+  ],
+  choices: [
+    {
+      id: 'emitter-use-now',
+      text: '즉시 사용',
+      description: '적 기지에 대해 사이오닉 방출기를 즉시 가동한다.',
+      effects: [
+        { type: 'modify-stat', entityId: 'faction-terran', statId: 'military-power', amount: 20 },
+        { type: 'modify-stat', entityId: 'faction-terran', statId: 'stability', amount: -10 },
+      ],
+      resultText: '방출기가 가동되자 저그가 연합군 기지로 몰려든다. 케리건이 불안한 눈빛으로 멩스크를 바라본다.',
+    },
+    {
+      id: 'emitter-research',
+      text: '연구 후 사용',
+      description: '방출기의 원리를 파악하여 더 효과적으로 활용한다.',
+      effects: [
+        { type: 'modify-stat', entityId: 'faction-terran', statId: 'tech-level', amount: 1 },
+      ],
+      resultText: '과학자들이 방출기의 사이오닉 주파수를 분석했다. 더 정밀한 통제가 가능해졌다.',
+    },
+    {
+      id: 'emitter-destroy',
+      text: '파괴',
+      description: '너무 위험한 무기다. 파괴하는 것이 옳다.',
+      effects: [
+        { type: 'modify-stat', entityId: 'faction-terran', statId: 'stability', amount: 10 },
+        { type: 'modify-stat', entityId: 'faction-terran', statId: 'influence', amount: 5 },
+      ],
+      resultText: '방출기가 파괴되었다. 케리건이 안도의 한숨을 쉰다. 멩스크의 표정은 읽을 수 없다.',
+    },
+  ],
+  maxOccurrences: 1,
+  priority: 88,
+  tags: ['discovery', 'terran', 'psi-emitter', 'major'],
+};
+
+export const discoveryEvents: GameEvent[] = [precursorArtifact, anomalyDetected, firstContact, zeratulCerebrateKill, darkTemplarDiscovery, psiEmitterFound];

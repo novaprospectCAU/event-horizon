@@ -327,4 +327,83 @@ export const overmindLandsAiur: GameEvent = {
   tags: ['military', 'zerg', 'protoss', 'major', 'invasion'],
 };
 
-export const militaryEvents: GameEvent[] = [borderIncursion, pirateRaid, fleetMutiny, armsRace, kerriganInfested, fenixFalls, overmindLandsAiur];
+export const dukeDefection: GameEvent = {
+  id: 'evt-duke-defection',
+  name: '듀크 장군 포섭',
+  description:
+    '안티가 프라임에서 듀크 장군의 기함 노라드 II가 저그에 의해 격추되었다. 코랄의 후예가 듀크를 구출하면 연합에서 전향시킬 수 있다.',
+  triggers: [
+    { type: 'turn-reached', turn: 6 },
+    { type: 'tag-present', entityId: 'system-antiga', tag: 'psi-emitter-used' },
+  ],
+  effects: [
+    { type: 'modify-stat', entityId: 'faction-terran', statId: 'military-power', amount: 20 },
+  ],
+  choices: [
+    {
+      id: 'duke-rescue',
+      text: '듀크를 구출하고 합류를 제안',
+      description: '노라드 II의 잔해에서 듀크를 구출하여 코랄의 후예에 합류시킨다.',
+      effects: [
+        { type: 'modify-stat', entityId: 'faction-terran', statId: 'military-power', amount: 20 },
+        { type: 'modify-stat', entityId: 'faction-terran', statId: 'influence', amount: 10 },
+      ],
+      resultText: '듀크가 코랄의 후예에 합류했다. "연합은 날 버렸어. 멩스크, 당신 밑에서 일하겠소." 알파 전대의 화력이 더해졌다.',
+    },
+    {
+      id: 'duke-conditions',
+      text: '구출 조건으로 정보 제공을 요구',
+      description: '연합의 기밀 정보를 대가로 구출을 제안한다.',
+      effects: [
+        { type: 'modify-stat', entityId: 'faction-terran', statId: 'tech-level', amount: 1 },
+        { type: 'modify-stat', entityId: 'faction-terran', statId: 'military-power', amount: 10 },
+      ],
+      resultText: '듀크가 연합의 극비 군사 기지 위치를 넘겼다. "이 정도면 됐겠지? 이제 날 꺼내줘."',
+    },
+  ],
+  maxOccurrences: 1,
+  priority: 85,
+  tags: ['military', 'terran', 'duke', 'defection'],
+};
+
+export const newGettysburg: GameEvent = {
+  id: 'evt-new-gettysburg',
+  name: '뉴 게티스버그 전투',
+  description:
+    '케리건이 뉴 게티스버그에서 저그의 공세를 방어하는 임무를 수행 중이다. 멩스크가 전군 철수를 명령하고, 케리건은 저그에게 둘러싸인다.',
+  triggers: [
+    { type: 'tag-present', entityId: 'system-tarsonis', tag: 'fallen' },
+    { type: 'turn-reached', turn: 10 },
+  ],
+  effects: [
+    { type: 'set-tag', entityId: 'char-kerrigan', tag: 'abandoned' },
+    { type: 'modify-stat', entityId: 'faction-terran', statId: 'stability', amount: -10 },
+  ],
+  choices: [
+    {
+      id: 'gettysburg-rescue',
+      text: '케리건 구출 시도',
+      description: '멩스크의 명령을 어기고 케리건을 구출하러 간다.',
+      effects: [
+        { type: 'modify-stat', entityId: 'faction-terran', statId: 'military-power', amount: -20 },
+        { type: 'modify-stat', entityId: 'char-raynor', statId: 'loyalty', amount: -15 },
+      ],
+      resultText: '구출 시도는 실패했다. 너무 많은 저그가 몰려들어 접근조차 불가능했다. 레이너의 분노가 하늘을 찌른다.',
+    },
+    {
+      id: 'gettysburg-obey',
+      text: '철수 명령에 순응',
+      description: '멩스크의 명령에 따라 전군 철수한다.',
+      effects: [
+        { type: 'modify-stat', entityId: 'char-raynor', statId: 'loyalty', amount: -25 },
+        { type: 'modify-stat', entityId: 'faction-terran', statId: 'stability', amount: -5 },
+      ],
+      resultText: '"케리건! 케리건!!" 레이너의 절규가 통신 채널에 울려 퍼진다. 함대는 이미 워프 점프를 시작했다.',
+    },
+  ],
+  maxOccurrences: 1,
+  priority: 92,
+  tags: ['military', 'terran', 'kerrigan', 'betrayal', 'major'],
+};
+
+export const militaryEvents: GameEvent[] = [borderIncursion, pirateRaid, fleetMutiny, armsRace, kerriganInfested, fenixFalls, overmindLandsAiur, dukeDefection, newGettysburg];

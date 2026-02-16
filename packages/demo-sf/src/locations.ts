@@ -104,7 +104,7 @@ export const systemMarSara: Entity = {
   id: 'system-marsara',
   typeId: 'system',
   name: '마 사라',
-  tags: ['location', 'system', 'terran-space', 'colony'],
+  tags: ['location', 'system', 'terran-space', 'colony', 'frontier'],
   components: {
     'star-system': {
       defId: 'star-system',
@@ -112,7 +112,7 @@ export const systemMarSara: Entity = {
         starType: 'G8V',
         planets: 3,
         controllerId: 'faction-terran',
-        contested: true,
+        contested: false,
         coordinates: { x: -30, y: 20 },
       },
     },
@@ -128,23 +128,23 @@ export const systemTarsonis: Entity = {
   id: 'system-tarsonis',
   typeId: 'system',
   name: '타소니스',
-  tags: ['location', 'system', 'terran-space', 'destroyed'],
+  tags: ['location', 'system', 'terran-space', 'capital'],
   components: {
     'star-system': {
       defId: 'star-system',
       values: {
         starType: 'G5V',
         planets: 5,
-        controllerId: '',
-        contested: true,
+        controllerId: 'faction-terran',
+        contested: false,
         coordinates: { x: -20, y: -10 },
       },
     },
   },
   stats: {
-    population: 500,
+    population: 8000,
     resources: 200,
-    'defense-level': 10,
+    'defense-level': 80,
   },
 };
 
@@ -152,15 +152,15 @@ export const systemAntiga: Entity = {
   id: 'system-antiga',
   typeId: 'system',
   name: '안티가 프라임',
-  tags: ['location', 'system', 'contested', 'border'],
+  tags: ['location', 'system', 'terran-space', 'border'],
   components: {
     'star-system': {
       defId: 'star-system',
       values: {
         starType: 'K5V',
         planets: 4,
-        controllerId: '',
-        contested: true,
+        controllerId: 'faction-terran',
+        contested: false,
         coordinates: { x: -60, y: 40 },
       },
     },
@@ -208,15 +208,15 @@ export const systemBraxis: Entity = {
   id: 'system-braxis',
   typeId: 'system',
   name: '브락시스',
-  tags: ['location', 'system', 'contested', 'ice-world'],
+  tags: ['location', 'system', 'terran-space', 'ice-world'],
   components: {
     'star-system': {
       defId: 'star-system',
       values: {
         starType: 'A3V',
         planets: 2,
-        controllerId: '',
-        contested: true,
+        controllerId: 'faction-terran',
+        contested: false,
         coordinates: { x: 40, y: -40 },
       },
     },

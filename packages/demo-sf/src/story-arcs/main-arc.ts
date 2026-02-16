@@ -487,6 +487,73 @@ export const tassadarSacrificeDialogue: DialogueTree = {
   ],
 };
 
+// ─── 6. 초월체 독백 ───
+export const overmindMonologueDialogue: DialogueTree = {
+  id: 'dialogue-overmind-monologue',
+  name: '초월체의 독백',
+  startNodeId: 'node-om-1',
+  nodes: [
+    {
+      id: 'node-om-1',
+      speakerId: 'char-overmind',
+      text: '칼라... 나의 창조자들이 거부한 순수함. 젤나가는 우리를 만들고, 우리가 스스로 진화하기를 원했다. 하지만 나는 그들의 의도를 초월했다.',
+      emotion: 'neutral',
+      responses: [
+        { id: 'resp-om1a', text: '계속 듣는다.', nextNodeId: 'node-om-2' },
+      ],
+    },
+    {
+      id: 'node-om-2',
+      speakerId: 'char-overmind',
+      text: '프로토스여, 너희의 완벽함을 군단에 더할 것이다. 너희의 칼라가 나의 군단과 합쳐지면, 젤나가가 꿈꾸었던 진정한 완성이 이루어진다.',
+      emotion: 'neutral',
+      responses: [
+        { id: 'resp-om2a', text: '초월체의 진정한 목적은?', nextNodeId: 'node-om-3' },
+      ],
+    },
+    {
+      id: 'node-om-3',
+      speakerId: 'char-overmind',
+      text: '순수한 형태와 순수한 정수의 합일... 그것이 나의 존재 이유이며, 이 우주의 순환이 완성되는 길이다. 아이어여, 나의 요람이 되어라.',
+      emotion: 'neutral',
+      isEnd: true,
+    },
+  ],
+};
+
+// ─── 7. 칼날 여왕 각성 ───
+export const queenAwakeningDialogue: DialogueTree = {
+  id: 'dialogue-queen-awakening',
+  name: '칼날 여왕의 각성',
+  startNodeId: 'node-qa-1',
+  nodes: [
+    {
+      id: 'node-qa-1',
+      speakerId: 'char-kerrigan',
+      text: '이 새로운 감각... 이 힘... 나는 더 이상 그들의 도구가 아니야.',
+      emotion: 'neutral',
+      responses: [
+        { id: 'resp-qa1a', text: '레이너를 기억하는가?', nextNodeId: 'node-qa-2a' },
+        { id: 'resp-qa1b', text: '멩스크를 기억하는가?', nextNodeId: 'node-qa-2b' },
+      ],
+    },
+    {
+      id: 'node-qa-2a',
+      speakerId: 'char-kerrigan',
+      text: '레이너... 그 이름이 아직 의미가 있다니. 하지만 그 연민, 그 약함... 나는 이제 그것을 초월했어. 그가 나를 구하러 오겠지. 하지만 구원받아야 할 것은 그 자신이야.',
+      emotion: 'neutral',
+      isEnd: true,
+    },
+    {
+      id: 'node-qa-2b',
+      speakerId: 'char-kerrigan',
+      text: '멩스크... 나를 버린 남자. 그의 야망이 나를 이곳에 보냈지. 하지만 그에게 감사해야 할지도 몰라. 이 힘을 주었으니까. 그리고 그 대가는 반드시 치르게 할 거야.',
+      emotion: 'angry',
+      isEnd: true,
+    },
+  ],
+};
+
 // ═══════════════════════════════════════════════════════════════
 // 장면 (13개 + 기존 6개 확장)
 // ═══════════════════════════════════════════════════════════════
@@ -496,12 +563,12 @@ export const scenes: Scene[] = [
   {
     id: 'scene-first-contact',
     name: '첫 접촉',
-    description: '마 사라에서 저그가 처음 출현하고, 프로토스가 정화를 시작한다.',
+    description: '마 사라 보안관 레이너가 식민지에서 처음으로 저그와 조우한다. 이후 프로토스가 정화를 시작한다.',
     locationId: 'system-marsara',
     participantIds: ['char-raynor', 'char-mengsk'],
     dialogue: signalsBriefingDialogue,
     narrativeText:
-      '마 사라의 하늘에서 불길한 그림자가 내려온다. 변경 식민지의 통신이 하나둘 끊기기 시작하고, 이윽고 프로토스 함대가 궤도에 나타나 행성 표면을 불태운다. 저그를 처리하기 위해... 인간까지 함께.',
+      '마 사라 식민지 보안관 짐 레이너는 주민들의 실종 신고를 조사하던 중, 외곽 농장에서 끔찍한 광경을 목격한다. 알 수 없는 생물체가 주민들을 습격하고 있다. 이것이 저그와의 첫 조우다. 연합에 긴급 지원을 요청하지만 묵살당하고, 이윽고 프로토스 함대가 궤도에 나타나 행성 표면을 불태운다. 저그를 처리하기 위해... 인간까지 함께.',
     aiNarrative: true,
   },
   {
@@ -511,7 +578,7 @@ export const scenes: Scene[] = [
     locationId: 'system-antiga',
     participantIds: ['char-raynor', 'char-mengsk', 'char-kerrigan'],
     narrativeText:
-      '"연합은 썩었소, 레이너 보안관. 우리가 새로운 질서를 만들 것이오." 멩스크의 카리스마 넘치는 연설에 레이너는 고개를 끄덕인다. 케리건이 옆에서 조용히 지켜본다.',
+      '"연합은 여러분의 행성을 저그에게 팔아넘겼습니다! 마 사라의 주민들이 도움을 요청했을 때, 연합은 그들을 버렸소!" 멩스크의 선동적인 연설이 울려 퍼진다. "연합은 썩었소, 레이너 보안관. 우리 코랄의 후예가 새로운 질서를 만들 것이오." 연합에 대한 환멸로 가득 찬 레이너는 고개를 끄덕인다. 케리건이 옆에서 조용히 지켜본다.',
     aiNarrative: true,
   },
   {
@@ -547,8 +614,9 @@ export const scenes: Scene[] = [
     description: '케리건이 저그에 감염되어 새로운 존재로 변이한다.',
     locationId: 'system-char',
     participantIds: ['char-kerrigan', 'char-overmind'],
+    dialogue: queenAwakeningDialogue,
     narrativeText:
-      '차 행성의 번데기 안에서 사라 케리건이 다시 태어난다. 인간성은 사라지고, 칼날 여왕이 눈을 뜬다. 초월체의 가장 완벽한 창조물.',
+      '차 행성의 번데기 안에서 사라 케리건이 다시 태어난다. 인간성은 사라지고, 칼날 여왕이 눈을 뜬다. 초월체의 가장 완벽한 창조물. 초월체가 독백한다: "칼라... 나의 창조자들이 거부한 순수함. 프로토스여, 너희의 완벽함을 군단에 더할 것이다."',
     aiNarrative: true,
     onStartEffects: [
       { type: 'set-tag', entityId: 'char-kerrigan', tag: 'infested' },
@@ -561,7 +629,7 @@ export const scenes: Scene[] = [
     locationId: 'system-char',
     participantIds: ['char-zeratul', 'char-tassadar', 'char-overmind'],
     narrativeText:
-      '제라툴의 공허의 칼날이 정신체 자스를 관통한다. 영원히 죽일 수 있는 유일한 방법. 그러나 그 순간, 초월체의 정신과 접촉이 이루어진다. "아이어... 찾았다." 제라툴은 자신이 무슨 짓을 했는지 깨닫고 절규한다.',
+      '제라툴의 공허의 칼날이 정신체 자스를 관통한다. 영원히 죽일 수 있는 유일한 방법. 그러나 그 순간, 초월체의 정신과 접촉이 이루어진다. "아이어... 찾았다." 제라툴은 자신이 무슨 짓을 했는지 깨닫고 절규한다. "내가... 아이어의 문을 열어버렸다..." 수백 년의 지혜로도 감당할 수 없는 죄책감이 그를 짓누른다.',
     aiNarrative: true,
   },
   {

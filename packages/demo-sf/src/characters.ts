@@ -10,21 +10,21 @@ export const raynor: Entity = {
   id: 'char-raynor',
   typeId: 'character',
   name: '짐 레이너',
-  tags: ['character', 'military', 'terran', 'rebel'],
+  tags: ['character', 'military', 'terran', 'marshal'],
   components: {
     'character-info': {
       defId: 'character-info',
       values: {
         species: '인간',
-        role: '레이너 특공대 사령관',
+        role: '마 사라 식민지 보안관',
         factionId: 'faction-terran',
         backstory:
-          '마 사라 출신의 전직 보안관. 멩스크의 배신 이후 반란군을 이끌며 자치령에 맞서고 있다. 정의감이 강하고 동료를 소중히 여긴다.',
+          '마 사라 식민지의 보안관. 연합의 부패와 무능에 환멸을 느끼고 있던 중, 저그 출현 이후 멩스크의 코랄의 후예와 접촉하게 된다. 정의감이 강하고 동료를 소중히 여기며, 평범한 사람들을 지키려는 의지가 확고하다.',
         portrait: 'raynor',
       },
     },
   },
-  stats: { loyalty: 40, competence: 80, ambition: 55 },
+  stats: { loyalty: 40, competence: 80, ambition: 55, 'psionic-power': 0 },
   locationId: 'system-marsara',
 };
 
@@ -32,21 +32,21 @@ export const mengsk: Entity = {
   id: 'char-mengsk',
   typeId: 'character',
   name: '아크튜러스 멩스크',
-  tags: ['character', 'leader', 'terran'],
+  tags: ['character', 'leader', 'terran', 'sons-of-korhal'],
   components: {
     'character-info': {
       defId: 'character-info',
       values: {
         species: '인간',
-        role: '테란 자치령 황제',
+        role: '코랄의 후예 지도자',
         factionId: 'faction-terran',
         backstory:
-          '코랄의 후예 반란군을 이끌어 연합을 무너뜨리고 자치령을 세운 야심가. 타소니스에서 케리건을 저그에게 버린 냉혹한 결단으로 악명이 높다.',
+          '코르할 4세 출신 광산 재벌의 아들. 테란 연합이 코르할을 핵폭격하여 가족이 전멸한 이후, 복수심으로 반연합 저항 조직 "코랄의 후예"를 결성했다. 카리스마 넘치는 연설가이자 냉혹한 전략가로, 목적을 위해서라면 어떤 희생도 감수한다.',
         portrait: 'mengsk',
       },
     },
   },
-  stats: { loyalty: 95, competence: 85, ambition: 99 },
+  stats: { loyalty: 95, competence: 85, ambition: 99, 'psionic-power': 0 },
   locationId: 'system-korhal',
 };
 
@@ -54,22 +54,22 @@ export const duke: Entity = {
   id: 'char-duke',
   typeId: 'character',
   name: '에드먼드 듀크 장군',
-  tags: ['character', 'military', 'terran'],
+  tags: ['character', 'military', 'terran', 'confederacy'],
   components: {
     'character-info': {
       defId: 'character-info',
       values: {
         species: '인간',
-        role: '자치령 군 총사령관',
+        role: '테란 연합 알파 전대 사령관',
         factionId: 'faction-terran',
         backstory:
-          '구 연합의 장군 출신으로 멩스크에게 전향했다. 오만하고 보수적이지만 유능한 군사 지휘관. 알파 전대를 이끈다.',
+          '테란 연합 최정예 알파 전대의 지휘관. 안티가 프라임에서 저그에게 기함 노라드 II가 격추된 후, 코랄의 후예에 구출되어 전향하게 된다. 오만하고 보수적이지만 유능한 군사 지휘관.',
         portrait: 'duke',
       },
     },
   },
-  stats: { loyalty: 75, competence: 70, ambition: 60 },
-  locationId: 'system-korhal',
+  stats: { loyalty: 75, competence: 70, ambition: 60, 'psionic-power': 0 },
+  locationId: 'system-tarsonis',
 };
 
 export const kerrigan: Entity = {
@@ -82,16 +82,16 @@ export const kerrigan: Entity = {
       defId: 'character-info',
       values: {
         species: '인간 (감염 전)',
-        role: '유령 요원',
+        role: '유령 요원 (사이오닉 등급 10)',
         factionId: 'faction-terran',
         backstory:
-          '연합의 유령 프로그램에서 훈련받은 최강의 사이오닉 요원. 멩스크를 따라 코랄의 후예에 합류했으나, 타소니스 전투에서 저그에게 버려지는 운명을 맞이한다.',
+          '8세에 사이오닉 능력이 폭주하여 어머니가 사망했다. 테란 연합 유령 프로그램에서 기억 소거와 세뇌를 거쳐 최강의 유령 요원이 되었다. 사이오닉 등급 Class 10(역대 최고). 멩스크가 신경 억제장치를 해제하여 코랄의 후예에 합류한 상태.',
         portrait: 'kerrigan',
       },
     },
   },
-  stats: { loyalty: 70, competence: 95, ambition: 60 },
-  locationId: 'system-tarsonis',
+  stats: { loyalty: 70, competence: 95, ambition: 60, 'psionic-power': 95 },
+  locationId: 'system-korhal',
 };
 
 // ─── 프로토스 캐릭터 ───
@@ -114,7 +114,7 @@ export const tassadar: Entity = {
       },
     },
   },
-  stats: { loyalty: 80, competence: 95, ambition: 40 },
+  stats: { loyalty: 80, competence: 95, ambition: 40, 'psionic-power': 80 },
   locationId: 'system-aiur',
 };
 
@@ -131,12 +131,12 @@ export const zeratul: Entity = {
         role: '암흑 기사 족장',
         factionId: 'faction-protoss',
         backstory:
-          '수백 년간 추방당한 암흑 기사단의 족장. 공허의 에너지를 다루며, 정신체 자스를 처치해 초월체에게 아이어의 위치를 알려주는 비극적 실수를 저지른다.',
+          '약 635세의 네라짐(Nerazim) 족장. 수천 년 전 아이어에서 추방된 암흑 기사 일파의 지도자로, 공허의 에너지를 다룬다. 정신체 자스를 처치하는 과정에서 초월체와 정신 접촉이 이루어져 아이어의 위치를 노출시키는 비극적 실수를 저지른다.',
         portrait: 'zeratul',
       },
     },
   },
-  stats: { loyalty: 60, competence: 92, ambition: 30 },
+  stats: { loyalty: 60, competence: 92, ambition: 30, 'psionic-power': 75 },
   locationId: 'system-shakuras',
 };
 
@@ -150,7 +150,7 @@ export const fenix: Entity = {
       defId: 'character-info',
       values: {
         species: '프로토스',
-        role: '기사단장',
+        role: '법무관 (Praetor)',
         factionId: 'faction-protoss',
         backstory:
           '프로토스 최고의 전사. 안티오크 전투에서 저그에게 치명상을 입었으나 드라군으로 부활했다. 불굴의 의지와 명예를 상징한다.',
@@ -158,7 +158,7 @@ export const fenix: Entity = {
       },
     },
   },
-  stats: { loyalty: 90, competence: 88, ambition: 25 },
+  stats: { loyalty: 90, competence: 88, ambition: 25, 'psionic-power': 0 },
   locationId: 'system-aiur',
 };
 
@@ -172,15 +172,15 @@ export const aldaris: Entity = {
       defId: 'character-info',
       values: {
         species: '프로토스',
-        role: '심판관',
+        role: '재판관 (Judicator)',
         factionId: 'faction-protoss',
         backstory:
-          '프로토스 의회의 보수파 심판관. 전통과 칼라를 최우선시하며, 태사다르와 암흑 기사의 이단적 동맹을 강하게 반대한다.',
+          '프로토스 의회의 보수파 재판관. 전통과 칼라를 최우선시하며, 태사다르와 암흑 기사의 이단적 동맹을 강하게 반대한다.',
         portrait: 'aldaris',
       },
     },
   },
-  stats: { loyalty: 95, competence: 70, ambition: 75 },
+  stats: { loyalty: 95, competence: 70, ambition: 75, 'psionic-power': 40 },
   locationId: 'system-aiur',
 };
 
@@ -199,12 +199,12 @@ export const overmind: Entity = {
         role: '저그 군단 최고 의식',
         factionId: 'faction-zerg',
         backstory:
-          '젤나가가 만든 저그 군단의 통합 의식체. 완벽한 생명체를 만들기 위해 끊임없이 진화를 추구하며, 프로토스의 사이오닉 잠재력을 탐내고 있다.',
+          '젤나가가 순수한 형태(Purity of Essence)를 달성하기 위해 저그를 창조했으나, 초월체가 창조자를 동화·흡수했다. 칼라와 결합하여 완벽해지려는 궁극적 목표를 가지고 있으며, 프로토스의 사이오닉 잠재력을 탐내고 있다.',
         portrait: 'overmind',
       },
     },
   },
-  stats: { loyalty: 100, competence: 98, ambition: 100 },
+  stats: { loyalty: 100, competence: 98, ambition: 100, 'psionic-power': 100 },
   locationId: 'system-char',
 };
 
@@ -221,12 +221,12 @@ export const artanis: Entity = {
         role: '젊은 집행관',
         factionId: 'faction-protoss',
         backstory:
-          '프로토스의 젊은 집행관. 태사다르를 존경하며 그의 가르침을 따른다. 아이어 함락 후 프로토스의 재건을 이끌 차세대 지도자.',
+          '프로토스의 젊은 집행관. EP3의 플레이어 캐릭터(집행관)와는 별도 인물로, EP3 최종 미션에서 함대 지휘관으로 등장한다. 태사다르를 존경하며 그의 가르침을 따르고, 아이어 함락 후 프로토스의 재건을 이끌 차세대 지도자.',
         portrait: 'artanis',
       },
     },
   },
-  stats: { loyalty: 85, competence: 80, ambition: 65 },
+  stats: { loyalty: 85, competence: 80, ambition: 65, 'psionic-power': 55 },
   locationId: 'system-aiur',
 };
 
@@ -256,7 +256,7 @@ export const npcProfiles: NPCBehaviorProfile[] = [
     goals: [
       {
         id: 'goal-raynor-1',
-        name: '멩스크 정권 타도',
+        name: '연합의 부패에 맞서 싸움',
         priority: 90,
         status: 'active',
         completionConditions: [],
@@ -289,7 +289,7 @@ export const npcProfiles: NPCBehaviorProfile[] = [
       },
     ],
     aiPersonalityPrompt:
-      '당신은 짐 레이너입니다. 정의감이 강하고 동료를 소중히 여기는 반란군 지도자입니다. 멩스크의 독재에 맞서 싸우면서도 인류의 생존을 최우선으로 합니다.',
+      '당신은 짐 레이너입니다. 마 사라의 보안관으로, 정의감이 강하고 동료를 소중히 여깁니다. 연합의 부패에 환멸을 느끼며 평범한 사람들을 지키기 위해 싸웁니다.',
     useAI: true,
   },
   {
@@ -302,18 +302,18 @@ export const npcProfiles: NPCBehaviorProfile[] = [
     goals: [
       {
         id: 'goal-mengsk-1',
-        name: '자치령 절대 권력 장악',
+        name: '연합 붕괴 및 새 질서 수립',
         priority: 100,
         status: 'active',
         completionConditions: [],
       },
       {
         id: 'goal-mengsk-2',
-        name: '반란 세력 소탕',
+        name: '코르할 학살에 대한 복수',
         priority: 85,
         status: 'active',
         completionConditions: [],
-        relatedEntities: ['char-raynor'],
+        relatedEntities: ['faction-terran'],
       },
     ],
     behaviorRules: [
@@ -327,7 +327,7 @@ export const npcProfiles: NPCBehaviorProfile[] = [
       },
     ],
     aiPersonalityPrompt:
-      '당신은 아크튜러스 멩스크입니다. 권력을 향한 끝없는 야망과 카리스마로 자치령을 세운 황제입니다. 목적을 위해서라면 어떤 희생도 감수합니다.',
+      '당신은 아크튜러스 멩스크입니다. 코랄의 후예의 지도자로, 연합에 대한 복수심과 카리스마로 반란을 이끌고 있습니다. 목적을 위해서라면 어떤 희생도 감수하는 냉혹한 전략가입니다.',
     useAI: true,
   },
   {
@@ -349,6 +349,13 @@ export const npcProfiles: NPCBehaviorProfile[] = [
         id: 'goal-kerrigan-2',
         name: '동료 보호',
         priority: 90,
+        status: 'active',
+        completionConditions: [],
+      },
+      {
+        id: 'goal-kerrigan-3',
+        name: '과거의 기억을 되찾고 자유를 얻음',
+        priority: 70,
         status: 'active',
         completionConditions: [],
       },
@@ -376,7 +383,7 @@ export const npcProfiles: NPCBehaviorProfile[] = [
     goals: [
       {
         id: 'goal-overmind-1',
-        name: '프로토스 동화',
+        name: '칼라와 결합하여 젤나가의 순환을 완성',
         priority: 100,
         status: 'active',
         completionConditions: [],
@@ -479,6 +486,13 @@ export const npcProfiles: NPCBehaviorProfile[] = [
         status: 'active',
         completionConditions: [],
       },
+      {
+        id: 'goal-zeratul-3',
+        name: '초월체와 정신체의 본질 이해',
+        priority: 80,
+        status: 'active',
+        completionConditions: [],
+      },
     ],
     behaviorRules: [
       {
@@ -571,11 +585,11 @@ export const npcProfiles: NPCBehaviorProfile[] = [
     goals: [
       {
         id: 'goal-duke-1',
-        name: '멩스크에 충성',
+        name: '연합의 질서 유지',
         priority: 85,
         status: 'active',
         completionConditions: [],
-        relatedEntities: ['char-mengsk'],
+        relatedEntities: ['faction-terran'],
       },
     ],
     behaviorRules: [
@@ -588,7 +602,7 @@ export const npcProfiles: NPCBehaviorProfile[] = [
       },
     ],
     aiPersonalityPrompt:
-      '당신은 에드먼드 듀크 장군입니다. 자치령의 충실한 군 사령관으로서 멩스크의 명령을 철저히 수행합니다. 오만하지만 유능한 군인입니다.',
+      '당신은 에드먼드 듀크 장군입니다. 테란 연합 알파 전대의 사령관으로서 자부심이 강합니다. 오만하지만 유능한 군인으로, 강한 자의 편에 서는 현실주의자입니다.',
     useAI: true,
   },
   {
