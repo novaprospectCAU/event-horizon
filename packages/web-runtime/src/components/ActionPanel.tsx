@@ -25,7 +25,7 @@ export const ActionPanel: React.FC<ActionPanelProps> = ({
 
   return (
     <div className={`action-panel ${className ?? ''}`} style={{ padding: '16px' }}>
-      <h3 style={{ margin: '0 0 12px 0' }}>Available Actions</h3>
+      <h3 style={{ margin: '0 0 12px 0' }}>가능한 행동</h3>
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '16px' }}>
         {actions.map((act) => (
           <button
@@ -49,7 +49,7 @@ export const ActionPanel: React.FC<ActionPanelProps> = ({
 
       {selectedAction && hasTargets && (
         <div>
-          <h4 style={{ margin: '0 0 8px 0' }}>Select Target</h4>
+          <h4 style={{ margin: '0 0 8px 0' }}>대상 선택</h4>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
             {action!.targets!.map((targetId) => {
               const target = entities[targetId];
@@ -92,7 +92,7 @@ export const ActionPanel: React.FC<ActionPanelProps> = ({
             cursor: 'pointer',
           }}
         >
-          Execute
+          실행
         </button>
       )}
     </div>

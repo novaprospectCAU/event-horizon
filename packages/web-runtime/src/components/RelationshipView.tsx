@@ -31,7 +31,7 @@ export const RelationshipView: React.FC<RelationshipViewProps> = ({
 
   return (
     <div className={`relationship-view ${className ?? ''}`} style={{ padding: '12px' }}>
-      <h4 style={{ margin: '0 0 8px 0' }}>{entity.name} - Relations</h4>
+      <h4 style={{ margin: '0 0 8px 0' }}>{entity.name} - 관계</h4>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
         {relations.map((rel) => {
           const otherId = rel.sourceId === entity.id ? rel.targetId : rel.sourceId;

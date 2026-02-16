@@ -18,7 +18,7 @@ export const StatsPanel: React.FC<StatsPanelProps> = ({ entity, statDefs, classN
 
   return (
     <div className={`stats-panel ${className ?? ''}`} style={{ padding: '12px' }}>
-      <h4 style={{ margin: '0 0 8px 0' }}>{entity.name} - Stats</h4>
+      <h4 style={{ margin: '0 0 8px 0' }}>{entity.name} - 능력치</h4>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
         {stats.map(([statId, value]) => {
           const def = statDefs?.find((d) => d.id === statId);

@@ -15,16 +15,16 @@ export interface TurnIndicatorProps {
 }
 
 const phaseLabels: Record<string, string> = {
-  'player-action': 'Your Turn',
-  'npc-action': 'NPC Turn',
-  'event-resolution': 'Events',
-  'world-update': 'World Update',
+  'player-action': '내 차례',
+  'npc-action': 'NPC 차례',
+  'event-resolution': '이벤트',
+  'world-update': '세계 갱신',
 };
 
 export const TurnIndicator: React.FC<TurnIndicatorProps> = ({
   turn,
   phase,
-  turnLabel = 'Turn',
+  turnLabel = '턴',
   onEndTurn,
   awaitingInput,
   className,
@@ -72,7 +72,7 @@ export const TurnIndicator: React.FC<TurnIndicatorProps> = ({
             fontWeight: 'bold',
           }}
         >
-          End Turn
+          턴 종료
         </button>
       )}
     </div>

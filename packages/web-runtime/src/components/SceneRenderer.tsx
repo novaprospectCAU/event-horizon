@@ -42,12 +42,12 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
         <h3 style={{ margin: 0 }}>{scene.name}</h3>
         {location && (
           <div style={{ fontSize: '0.85em', color: '#888', marginTop: '4px' }}>
-            Location: {location.name}
+            위치: {location.name}
           </div>
         )}
         {participants.length > 0 && (
           <div style={{ fontSize: '0.85em', color: '#888', marginTop: '2px' }}>
-            Present: {participants.map((p) => p.name).join(', ')}
+            참석: {participants.map((p) => p.name).join(', ')}
           </div>
         )}
       </div>
