@@ -1,35 +1,34 @@
 /**
- * @event-horizon/demo-sf - SF Space Opera Demo Scenario
+ * @event-horizon/demo-sf - 스타크래프트 데모 시나리오
  *
- * A complete demo scenario featuring:
- * - 3 factions (Terran Confederation, Kethari Dominion, Synthesis Collective)
- * - 10 unique characters with behavior profiles
- * - 8 star systems
- * - 15+ scripted events (diplomatic, military, discovery, internal)
- * - 3 story arcs with multiple stages
- * - 6 scenes with dialogue trees
- * - 3-5 possible endings determined by player choices
+ * SC1 오리지널 3에피소드 기반 콘텐츠:
+ * - 3 종족 (테란 자치령, 프로토스, 저그 군단)
+ * - 10 주요 캐릭터 + 10 NPC 행동 프로필
+ * - 8 성계
+ * - 20+ 이벤트 (외교, 군사, 탐사, 내부)
+ * - 3 스토리 아크 (아이어 침공 8단계, 자치령 횡포 4단계, 빛과 어둠의 화합 5단계)
+ * - 18 장면 + 5 대사 트리
  */
 
 export { sfSchema } from './schema.js';
-export { factions, terranConfederation, kethariDominion, synthesisCollective } from './factions.js';
+export { factions, terranDominion, protoss, zergSwarm } from './factions.js';
 export {
   characters,
   npcProfiles,
-  admiralChen,
-  ambassadorVoss,
-  drKowalski,
-  warlordThrax,
-  spymasterZira,
-  generalKorr,
-  archonVexa,
-  emissaryEcho,
-  researcherPhi,
-  captainRex,
+  raynor,
+  mengsk,
+  duke,
+  kerrigan,
+  tassadar,
+  zeratul,
+  fenix,
+  aldaris,
+  overmind,
+  artanis,
 } from './characters.js';
 export { locations } from './locations.js';
 export { allEvents, diplomaticEvents, militaryEvents, discoveryEvents, internalEvents } from './events/index.js';
-export { storyArcs, scenes, convergenceArc, kethariCivilWarArc, synthesisAwakeningArc } from './story-arcs/index.js';
+export { storyArcs, scenes, aiurInvasionArc, dominionTyrannyArc, templarUnityArc } from './story-arcs/index.js';
 
 import { sfSchema } from './schema.js';
 import { factions } from './factions.js';
@@ -39,30 +38,37 @@ import { allEvents } from './events/index.js';
 import { storyArcs, scenes } from './story-arcs/index.js';
 import type { WorldState, Entity, Relation, TurnState } from '@event-horizon/types';
 
-/** Initial relations between factions */
+/** Initial relations between factions - SC1 실제 관계 반영 */
 const initialRelations: Relation[] = [
-  // Diplomatic relations
-  { id: 'rel-1', typeId: 'diplomatic', sourceId: 'faction-terran', targetId: 'faction-kethari', weight: -20, createdTurn: 0, modifiedTurn: 0 },
-  { id: 'rel-2', typeId: 'diplomatic', sourceId: 'faction-terran', targetId: 'faction-synthesis', weight: 15, createdTurn: 0, modifiedTurn: 0 },
-  { id: 'rel-3', typeId: 'diplomatic', sourceId: 'faction-kethari', targetId: 'faction-synthesis', weight: -30, createdTurn: 0, modifiedTurn: 0 },
-  // Trade relations
-  { id: 'rel-4', typeId: 'trade', sourceId: 'faction-terran', targetId: 'faction-synthesis', weight: 25, createdTurn: 0, modifiedTurn: 0 },
-  { id: 'rel-5', typeId: 'trade', sourceId: 'faction-terran', targetId: 'faction-kethari', weight: 5, createdTurn: 0, modifiedTurn: 0 },
-  { id: 'rel-6', typeId: 'trade', sourceId: 'faction-kethari', targetId: 'faction-synthesis', weight: 0, createdTurn: 0, modifiedTurn: 0 },
-  // Character loyalties
-  { id: 'rel-7', typeId: 'loyalty-to', sourceId: 'char-chen', targetId: 'faction-terran', weight: 85, createdTurn: 0, modifiedTurn: 0 },
-  { id: 'rel-8', typeId: 'loyalty-to', sourceId: 'char-voss', targetId: 'faction-terran', weight: 70, createdTurn: 0, modifiedTurn: 0 },
-  { id: 'rel-9', typeId: 'loyalty-to', sourceId: 'char-kowalski', targetId: 'faction-terran', weight: 55, createdTurn: 0, modifiedTurn: 0 },
-  { id: 'rel-10', typeId: 'loyalty-to', sourceId: 'char-thrax', targetId: 'faction-kethari', weight: 95, createdTurn: 0, modifiedTurn: 0 },
-  { id: 'rel-11', typeId: 'loyalty-to', sourceId: 'char-zira', targetId: 'faction-kethari', weight: 60, createdTurn: 0, modifiedTurn: 0 },
-  { id: 'rel-12', typeId: 'loyalty-to', sourceId: 'char-korr', targetId: 'faction-kethari', weight: 90, createdTurn: 0, modifiedTurn: 0 },
-  { id: 'rel-13', typeId: 'loyalty-to', sourceId: 'char-vexa', targetId: 'faction-synthesis', weight: 80, createdTurn: 0, modifiedTurn: 0 },
-  { id: 'rel-14', typeId: 'loyalty-to', sourceId: 'char-echo', targetId: 'faction-synthesis', weight: 75, createdTurn: 0, modifiedTurn: 0 },
-  { id: 'rel-15', typeId: 'loyalty-to', sourceId: 'char-phi', targetId: 'faction-synthesis', weight: 65, createdTurn: 0, modifiedTurn: 0 },
-  // Personal relations
-  { id: 'rel-16', typeId: 'personal', sourceId: 'char-chen', targetId: 'char-voss', weight: 30, createdTurn: 0, modifiedTurn: 0 },
-  { id: 'rel-17', typeId: 'personal', sourceId: 'char-thrax', targetId: 'char-zira', weight: -15, createdTurn: 0, modifiedTurn: 0 },
-  { id: 'rel-18', typeId: 'personal', sourceId: 'char-kowalski', targetId: 'char-phi', weight: 20, createdTurn: 0, modifiedTurn: 0 },
+  // 외교 관계 (SC1 기준)
+  { id: 'rel-1', typeId: 'diplomatic', sourceId: 'faction-terran', targetId: 'faction-protoss', weight: -30, createdTurn: 0, modifiedTurn: 0 },
+  { id: 'rel-2', typeId: 'diplomatic', sourceId: 'faction-terran', targetId: 'faction-zerg', weight: -60, createdTurn: 0, modifiedTurn: 0 },
+  { id: 'rel-3', typeId: 'diplomatic', sourceId: 'faction-protoss', targetId: 'faction-zerg', weight: -80, createdTurn: 0, modifiedTurn: 0 },
+  // 교역 관계
+  { id: 'rel-4', typeId: 'trade', sourceId: 'faction-terran', targetId: 'faction-protoss', weight: 5, createdTurn: 0, modifiedTurn: 0 },
+  { id: 'rel-5', typeId: 'trade', sourceId: 'faction-terran', targetId: 'faction-zerg', weight: 0, createdTurn: 0, modifiedTurn: 0 },
+  { id: 'rel-6', typeId: 'trade', sourceId: 'faction-protoss', targetId: 'faction-zerg', weight: 0, createdTurn: 0, modifiedTurn: 0 },
+  // 캐릭터 충성도
+  { id: 'rel-7', typeId: 'loyalty-to', sourceId: 'char-raynor', targetId: 'faction-terran', weight: 40, createdTurn: 0, modifiedTurn: 0 },
+  { id: 'rel-8', typeId: 'loyalty-to', sourceId: 'char-mengsk', targetId: 'faction-terran', weight: 95, createdTurn: 0, modifiedTurn: 0 },
+  { id: 'rel-9', typeId: 'loyalty-to', sourceId: 'char-duke', targetId: 'faction-terran', weight: 75, createdTurn: 0, modifiedTurn: 0 },
+  { id: 'rel-10', typeId: 'loyalty-to', sourceId: 'char-kerrigan', targetId: 'faction-terran', weight: 70, createdTurn: 0, modifiedTurn: 0 },
+  { id: 'rel-11', typeId: 'loyalty-to', sourceId: 'char-tassadar', targetId: 'faction-protoss', weight: 80, createdTurn: 0, modifiedTurn: 0 },
+  { id: 'rel-12', typeId: 'loyalty-to', sourceId: 'char-zeratul', targetId: 'faction-protoss', weight: 60, createdTurn: 0, modifiedTurn: 0 },
+  { id: 'rel-13', typeId: 'loyalty-to', sourceId: 'char-fenix', targetId: 'faction-protoss', weight: 90, createdTurn: 0, modifiedTurn: 0 },
+  { id: 'rel-14', typeId: 'loyalty-to', sourceId: 'char-aldaris', targetId: 'faction-protoss', weight: 95, createdTurn: 0, modifiedTurn: 0 },
+  { id: 'rel-15', typeId: 'loyalty-to', sourceId: 'char-overmind', targetId: 'faction-zerg', weight: 100, createdTurn: 0, modifiedTurn: 0 },
+  { id: 'rel-16', typeId: 'loyalty-to', sourceId: 'char-artanis', targetId: 'faction-protoss', weight: 85, createdTurn: 0, modifiedTurn: 0 },
+  // 개인 관계 (SC1 실제 관계)
+  { id: 'rel-17', typeId: 'personal', sourceId: 'char-raynor', targetId: 'char-kerrigan', weight: 70, createdTurn: 0, modifiedTurn: 0 },
+  { id: 'rel-18', typeId: 'personal', sourceId: 'char-kerrigan', targetId: 'char-raynor', weight: 60, createdTurn: 0, modifiedTurn: 0 },
+  { id: 'rel-19', typeId: 'personal', sourceId: 'char-raynor', targetId: 'char-mengsk', weight: 20, createdTurn: 0, modifiedTurn: 0 },
+  { id: 'rel-20', typeId: 'personal', sourceId: 'char-tassadar', targetId: 'char-zeratul', weight: 60, createdTurn: 0, modifiedTurn: 0 },
+  { id: 'rel-21', typeId: 'personal', sourceId: 'char-zeratul', targetId: 'char-tassadar', weight: 55, createdTurn: 0, modifiedTurn: 0 },
+  { id: 'rel-22', typeId: 'personal', sourceId: 'char-tassadar', targetId: 'char-aldaris', weight: -30, createdTurn: 0, modifiedTurn: 0 },
+  { id: 'rel-23', typeId: 'personal', sourceId: 'char-aldaris', targetId: 'char-tassadar', weight: -40, createdTurn: 0, modifiedTurn: 0 },
+  { id: 'rel-24', typeId: 'personal', sourceId: 'char-fenix', targetId: 'char-tassadar', weight: 70, createdTurn: 0, modifiedTurn: 0 },
+  { id: 'rel-25', typeId: 'personal', sourceId: 'char-overmind', targetId: 'char-kerrigan', weight: 80, createdTurn: 0, modifiedTurn: 0 },
 ];
 
 /** Build the entity map from all entity arrays */
@@ -87,7 +93,7 @@ const initialTurnState: TurnState = {
   awaitingInput: true,
 };
 
-/** Complete initial world state for the SF demo */
+/** Complete initial world state for the SC1 demo */
 export const sfWorldState: WorldState = {
   schema: sfSchema,
   turn: initialTurnState,
@@ -96,7 +102,7 @@ export const sfWorldState: WorldState = {
   events: allEvents,
   storyArcs,
   arcStates: [
-    { arcId: 'arc-convergence', currentStageIndex: 0, startedTurn: 0, completed: false, failed: false },
+    { arcId: 'arc-aiur-invasion', currentStageIndex: 0, startedTurn: 0, completed: false, failed: false },
   ],
   scenes,
   npcProfiles,

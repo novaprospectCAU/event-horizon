@@ -118,7 +118,7 @@ export const App: React.FC = () => {
   return (
     <div className="app">
       <header className="app-header">
-        <h1>코스믹 프론티어</h1>
+        <h1>코프룰루 전쟁</h1>
         <TurnIndicator
           turn={state.currentTurn}
           phase={state.currentPhase}

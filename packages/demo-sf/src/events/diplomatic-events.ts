@@ -156,4 +156,60 @@ export const allianceProposal: GameEvent = {
   tags: ['diplomatic', 'alliance'],
 };
 
-export const diplomaticEvents: GameEvent[] = [diplomaticCrisis, tradeAgreement, allianceProposal];
+export const protossPurification: GameEvent = {
+  id: 'evt-protoss-purification',
+  name: '프로토스의 정화',
+  description:
+    '프로토스 함대가 저그에 감염된 테란 식민지를 궤도에서 폭격하여 정화한다. 무고한 테란 시민들이 희생된다.',
+  triggers: [
+    { type: 'turn-reached', turn: 3 },
+    {
+      type: 'relation-threshold',
+      relationTypeId: 'diplomatic',
+      sourceId: 'faction-protoss',
+      targetId: 'faction-terran',
+      comparison: 'lt',
+      value: 0,
+    },
+  ],
+  effects: [
+    { type: 'modify-stat', entityId: 'system-marsara', statId: 'population', amount: -500 },
+    { type: 'modify-relation', relationTypeId: 'diplomatic', sourceId: 'faction-terran', targetId: 'faction-protoss', amount: -20 },
+  ],
+  choices: [
+    {
+      id: 'purify-protest',
+      text: '프로토스에 강력 항의',
+      description: '외교 채널을 통해 무차별 정화를 규탄한다.',
+      effects: [
+        { type: 'modify-relation', relationTypeId: 'diplomatic', sourceId: 'faction-terran', targetId: 'faction-protoss', amount: -10 },
+        { type: 'modify-stat', entityId: 'faction-terran', statId: 'influence', amount: 10 },
+      ],
+      resultText: '프로토스는 "하등 종족의 이해를 구하지 않는다"고 일축했다. 분노가 끓어오른다.',
+    },
+    {
+      id: 'purify-understand',
+      text: '프로토스의 의도를 이해하려 시도',
+      description: '태사다르에게 접촉하여 정화의 이유를 묻는다.',
+      effects: [
+        { type: 'modify-relation', relationTypeId: 'diplomatic', sourceId: 'faction-terran', targetId: 'faction-protoss', amount: 10 },
+        { type: 'modify-stat', entityId: 'faction-terran', statId: 'stability', amount: -5 },
+      ],
+      resultText: '태사다르가 답한다. "우리도 원치 않았소. 하지만 저그의 확산을 막으려면... 다른 방법이 없었소." 쓰라린 현실.',
+    },
+    {
+      id: 'purify-retaliate',
+      text: '군사적 보복',
+      effects: [
+        { type: 'modify-stat', entityId: 'faction-terran', statId: 'military-power', amount: -10 },
+        { type: 'modify-relation', relationTypeId: 'diplomatic', sourceId: 'faction-terran', targetId: 'faction-protoss', amount: -25 },
+      ],
+      resultText: '테란 함대가 프로토스 정화 함대에 포격했다. 양 종족 간의 긴장이 극에 달한다.',
+    },
+  ],
+  maxOccurrences: 1,
+  priority: 88,
+  tags: ['diplomatic', 'protoss', 'purification', 'major'],
+};
+
+export const diplomaticEvents: GameEvent[] = [diplomaticCrisis, tradeAgreement, allianceProposal, protossPurification];

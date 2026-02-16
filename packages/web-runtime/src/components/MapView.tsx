@@ -162,8 +162,8 @@ export const MapView: React.FC<MapViewProps> = ({
     const controllerId = entity.components['star-system']?.values?.['controllerId'] as string;
     if (!controllerId) return '#888';
     if (controllerId.includes('terran')) return '#3B82F6';
-    if (controllerId.includes('kethari')) return '#EF4444';
-    if (controllerId.includes('synthesis')) return '#8B5CF6';
+    if (controllerId.includes('protoss')) return '#EAB308';
+    if (controllerId.includes('zerg')) return '#9333EA';
     return '#888';
   }
 

@@ -160,7 +160,7 @@ export const armsRace: GameEvent = {
   name: '군비 경쟁 격화',
   description: '세 종족 모두 전례 없는 규모로 병력을 증강하고 있다. 전면전이 임박했다.',
   triggers: [
-    { type: 'turn-reached', turn: 8 },
+    { type: 'turn-reached', turn: 9 },
     { type: 'stat-threshold', entityId: 'faction-zerg', statId: 'military-power', comparison: 'gte', value: 200 },
   ],
   effects: [
@@ -201,4 +201,130 @@ export const armsRace: GameEvent = {
   tags: ['military', 'global'],
 };
 
-export const militaryEvents: GameEvent[] = [borderIncursion, pirateRaid, fleetMutiny, armsRace];
+export const kerriganInfested: GameEvent = {
+  id: 'evt-kerrigan-infested',
+  name: '칼날 여왕의 탄생',
+  description:
+    '타소니스에서 저그에게 버려진 케리건이 초월체에 의해 감염되었다. 번데기 안에서 새로운 존재로 변이하고 있다.',
+  triggers: [
+    { type: 'tag-present', entityId: 'system-tarsonis', tag: 'fallen' },
+    { type: 'turn-reached', turn: 12 },
+  ],
+  effects: [
+    { type: 'set-tag', entityId: 'char-kerrigan', tag: 'infested' },
+    { type: 'modify-stat', entityId: 'faction-zerg', statId: 'military-power', amount: 40 },
+  ],
+  choices: [
+    {
+      id: 'kerrigan-rescue',
+      text: '케리건 구출 작전 시도',
+      description: '차 행성에 특수부대를 투입하여 케리건을 구출한다.',
+      effects: [
+        { type: 'modify-stat', entityId: 'faction-terran', statId: 'military-power', amount: -25 },
+        { type: 'modify-relation', relationTypeId: 'diplomatic', sourceId: 'faction-terran', targetId: 'faction-zerg', amount: -20 },
+      ],
+      resultText: '차 행성 깊숙이 침투했으나 이미 때는 늦었다. 번데기는 비어 있었고, 칼날 여왕이 어둠 속에서 미소짓고 있었다.',
+    },
+    {
+      id: 'kerrigan-mourn',
+      text: '케리건의 죽음을 애도하고 방어에 집중',
+      effects: [
+        { type: 'modify-stat', entityId: 'faction-terran', statId: 'stability', amount: -10 },
+        { type: 'modify-stat', entityId: 'faction-terran', statId: 'military-power', amount: 10 },
+      ],
+      resultText: '레이너가 주먹을 움켜쥔다. "넌 아직 살아있다, 사라... 반드시 돌아오게 할 거야." 복수의 불꽃이 타오른다.',
+    },
+  ],
+  maxOccurrences: 1,
+  priority: 95,
+  tags: ['military', 'zerg', 'kerrigan', 'major'],
+};
+
+export const fenixFalls: GameEvent = {
+  id: 'evt-fenix-falls',
+  name: '피닉스의 전사와 귀환',
+  description:
+    '안티오크 전투에서 저그의 기습을 받은 피닉스가 치명상을 입는다. 그러나 드라군에 이식되어 전장에 복귀한다.',
+  triggers: [
+    { type: 'turn-reached', turn: 13 },
+    { type: 'stat-threshold', entityId: 'faction-zerg', statId: 'military-power', comparison: 'gte', value: 180 },
+  ],
+  effects: [
+    { type: 'set-tag', entityId: 'char-fenix', tag: 'dragoon' },
+    { type: 'modify-stat', entityId: 'faction-protoss', statId: 'military-power', amount: -15 },
+  ],
+  choices: [
+    {
+      id: 'fenix-honor',
+      text: '피닉스의 드라군 복귀를 축하',
+      effects: [
+        { type: 'modify-stat', entityId: 'faction-protoss', statId: 'stability', amount: 10 },
+        { type: 'modify-stat', entityId: 'faction-protoss', statId: 'military-power', amount: 20 },
+      ],
+      resultText: '"죽음조차 나를 막지 못했다!" 드라군 형태의 피닉스가 전장에 복귀하자 프로토스 전사들의 사기가 치솟는다.',
+    },
+    {
+      id: 'fenix-retreat',
+      text: '전선을 축소하고 피닉스를 후방에 배치',
+      effects: [
+        { type: 'modify-stat', entityId: 'faction-protoss', statId: 'stability', amount: 5 },
+      ],
+      resultText: '피닉스는 분해하지만, 회복기간이 필요하다는 의회의 결정에 따른다.',
+    },
+  ],
+  maxOccurrences: 1,
+  priority: 80,
+  tags: ['military', 'protoss', 'fenix'],
+};
+
+export const overmindLandsAiur: GameEvent = {
+  id: 'evt-overmind-lands-aiur',
+  name: '초월체의 아이어 착륙',
+  description:
+    '초월체가 수십억의 저그 군단과 함께 아이어에 착륙한다. 프로토스의 고향이 불타기 시작한다.',
+  triggers: [
+    { type: 'tag-present', entityId: 'system-aiur', tag: 'location-exposed' },
+    { type: 'turn-reached', turn: 17 },
+  ],
+  effects: [
+    { type: 'set-tag', entityId: 'system-aiur', tag: 'under-siege' },
+    { type: 'modify-stat', entityId: 'faction-protoss', statId: 'stability', amount: -25 },
+    { type: 'modify-stat', entityId: 'system-aiur', statId: 'defense-level', amount: -40 },
+  ],
+  choices: [
+    {
+      id: 'aiur-defend',
+      text: '아이어 총력 방어',
+      description: '모든 프로토스 병력을 아이어 방어에 투입한다.',
+      effects: [
+        { type: 'modify-stat', entityId: 'faction-protoss', statId: 'military-power', amount: -30 },
+        { type: 'modify-stat', entityId: 'system-aiur', statId: 'defense-level', amount: 25 },
+      ],
+      resultText: '프로토스 전사들이 결사적으로 저항하지만, 저그의 물량 앞에 전선이 서서히 밀리고 있다.',
+    },
+    {
+      id: 'aiur-evacuate',
+      text: '샤쿠라스로 대피 준비',
+      description: '아이어를 포기하고 민간인을 샤쿠라스로 대피시킨다.',
+      effects: [
+        { type: 'modify-stat', entityId: 'faction-protoss', statId: 'stability', amount: -10 },
+        { type: 'modify-stat', entityId: 'system-shakuras', statId: 'population', amount: 2000 },
+      ],
+      resultText: '차원 관문을 통해 대피가 시작된다. 아이어의 하늘 아래 마지막 순간들이 흘러간다.',
+    },
+    {
+      id: 'aiur-alliance',
+      text: '테란에 공동 방어 요청',
+      effects: [
+        { type: 'modify-relation', relationTypeId: 'diplomatic', sourceId: 'faction-protoss', targetId: 'faction-terran', amount: 20 },
+        { type: 'modify-stat', entityId: 'faction-protoss', statId: 'military-power', amount: 15 },
+      ],
+      resultText: '레이너 특공대가 지원군을 보냈다. 종족을 초월한 동맹이 저그에 맞선다.',
+    },
+  ],
+  maxOccurrences: 1,
+  priority: 100,
+  tags: ['military', 'zerg', 'protoss', 'major', 'invasion'],
+};
+
+export const militaryEvents: GameEvent[] = [borderIncursion, pirateRaid, fleetMutiny, armsRace, kerriganInfested, fenixFalls, overmindLandsAiur];

@@ -111,7 +111,7 @@ export const firstContact: GameEvent = {
   name: '미지의 젤나가 구조물 활성화',
   description: '샤쿠라스 근처에서 고대 젤나가 구조물이 갑자기 활성화되었다. 세 종족 모두의 운명을 바꿀 수 있는 사건이다.',
   triggers: [
-    { type: 'turn-reached', turn: 12 },
+    { type: 'turn-reached', turn: 15 },
     { type: 'stat-threshold', entityTag: 'terran', statId: 'tech-level', comparison: 'gte', value: 5 },
   ],
   effects: [],
@@ -148,4 +148,79 @@ export const firstContact: GameEvent = {
   tags: ['discovery', 'major', 'xelnaga'],
 };
 
-export const discoveryEvents: GameEvent[] = [precursorArtifact, anomalyDetected, firstContact];
+export const zeratulCerebrateKill: GameEvent = {
+  id: 'evt-zeratul-cerebrate-kill',
+  name: '정신체 자스 암살',
+  description:
+    '제라툴이 공허의 에너지로 정신체 자스를 영구적으로 처치한다. 그러나 초월체와의 정신 접촉으로 아이어의 위치가 노출된다.',
+  triggers: [
+    { type: 'turn-reached', turn: 14 },
+    { type: 'tag-present', entityId: 'char-kerrigan', tag: 'infested' },
+  ],
+  effects: [
+    { type: 'set-tag', entityId: 'system-aiur', tag: 'location-exposed' },
+    { type: 'modify-stat', entityId: 'faction-zerg', statId: 'military-power', amount: -20 },
+  ],
+  choices: [
+    {
+      id: 'cerebrate-warn',
+      text: '프로토스에 긴급 경고',
+      description: '아이어의 위치가 노출된 사실을 즉시 의회에 알린다.',
+      effects: [
+        { type: 'modify-stat', entityId: 'faction-protoss', statId: 'military-power', amount: 20 },
+        { type: 'modify-stat', entityId: 'system-aiur', statId: 'defense-level', amount: 15 },
+      ],
+      resultText: '알다리스는 제라툴의 실수를 비난했지만, 태사다르가 나서 방어 태세를 갖추게 했다. 시간은 많지 않다.',
+    },
+    {
+      id: 'cerebrate-hide',
+      text: '사실을 은폐하고 비밀리에 대비',
+      effects: [
+        { type: 'modify-stat', entityId: 'faction-protoss', statId: 'stability', amount: 5 },
+      ],
+      resultText: '제라툴은 죄책감에 시달리지만 침묵을 지킨다. 그러나 초월체의 군단은 이미 아이어를 향해 움직이고 있다.',
+    },
+  ],
+  maxOccurrences: 1,
+  priority: 98,
+  tags: ['discovery', 'protoss', 'zerg', 'major', 'cerebrate'],
+};
+
+export const darkTemplarDiscovery: GameEvent = {
+  id: 'evt-dark-templar-discovery',
+  name: '암흑 기사의 발견',
+  description:
+    '태사다르가 샤쿠라스에서 암흑 기사 제라툴과 접촉한다. 공허의 에너지가 저그를 영구적으로 처치할 수 있다는 사실을 알게 된다.',
+  triggers: [
+    { type: 'turn-reached', turn: 8 },
+    { type: 'tag-present', entityId: 'faction-protoss', tag: 'templar-schism' },
+  ],
+  effects: [
+    { type: 'modify-stat', entityId: 'faction-protoss', statId: 'tech-level', amount: 1 },
+  ],
+  choices: [
+    {
+      id: 'dark-templar-ally',
+      text: '암흑 기사와 동맹',
+      description: '수천 년의 금기를 깨고 암흑 기사와 협력한다.',
+      effects: [
+        { type: 'modify-stat', entityId: 'faction-protoss', statId: 'tech-level', amount: 2 },
+        { type: 'modify-stat', entityId: 'faction-protoss', statId: 'stability', amount: -10 },
+      ],
+      resultText: '칼라이와 암흑 기사가 함께 훈련을 시작한다. 의회는 분노하지만, 저그에 대한 새로운 희망이 생겼다.',
+    },
+    {
+      id: 'dark-templar-report',
+      text: '의회에 보고하고 승인을 구함',
+      effects: [
+        { type: 'modify-stat', entityId: 'faction-protoss', statId: 'stability', amount: 5 },
+      ],
+      resultText: '알다리스가 격분한다. "추방자들과 내통하다니!" 태사다르의 입지가 더욱 좁아진다.',
+    },
+  ],
+  maxOccurrences: 1,
+  priority: 85,
+  tags: ['discovery', 'protoss', 'dark-templar'],
+};
+
+export const discoveryEvents: GameEvent[] = [precursorArtifact, anomalyDetected, firstContact, zeratulCerebrateKill, darkTemplarDiscovery];

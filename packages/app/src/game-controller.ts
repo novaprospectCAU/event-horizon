@@ -66,7 +66,7 @@ export class GameController {
     this.sendAvailableActions();
     this.engineAdapter.emit(
       createNarrative(
-        '코스믹 프론티어에 오신 것을 환영합니다. 당신은 테란 연방을 지휘합니다. 은하가 당신의 결정을 기다리고 있습니다.',
+        '코프룰루 전쟁에 오신 것을 환영합니다. 당신은 테란 자치령을 지휘합니다. 코프룰루 구역이 당신의 결정을 기다리고 있습니다.',
         'system',
       ),
     );

@@ -6,7 +6,7 @@ import type { Entity, NPCBehaviorProfile } from '@event-horizon/types';
 
 // ─── 테란 캐릭터 ───
 
-export const admiralChen: Entity = {
+export const raynor: Entity = {
   id: 'char-raynor',
   typeId: 'character',
   name: '짐 레이너',
@@ -28,7 +28,7 @@ export const admiralChen: Entity = {
   locationId: 'system-marsara',
 };
 
-export const ambassadorVoss: Entity = {
+export const mengsk: Entity = {
   id: 'char-mengsk',
   typeId: 'character',
   name: '아크튜러스 멩스크',
@@ -41,7 +41,7 @@ export const ambassadorVoss: Entity = {
         role: '테란 자치령 황제',
         factionId: 'faction-terran',
         backstory:
-          '자유의 아들 반란군을 이끌어 연합을 무너뜨리고 자치령을 세운 야심가. 타소니스에서 케리건을 저그에게 버린 냉혹한 결단으로 악명이 높다.',
+          '코랄의 후예 반란군을 이끌어 연합을 무너뜨리고 자치령을 세운 야심가. 타소니스에서 케리건을 저그에게 버린 냉혹한 결단으로 악명이 높다.',
         portrait: 'mengsk',
       },
     },
@@ -50,7 +50,7 @@ export const ambassadorVoss: Entity = {
   locationId: 'system-korhal',
 };
 
-export const drKowalski: Entity = {
+export const duke: Entity = {
   id: 'char-duke',
   typeId: 'character',
   name: '에드먼드 듀크 장군',
@@ -72,7 +72,7 @@ export const drKowalski: Entity = {
   locationId: 'system-korhal',
 };
 
-export const warlordThrax: Entity = {
+export const kerrigan: Entity = {
   id: 'char-kerrigan',
   typeId: 'character',
   name: '사라 케리건',
@@ -85,7 +85,7 @@ export const warlordThrax: Entity = {
         role: '유령 요원',
         factionId: 'faction-terran',
         backstory:
-          '연합의 유령 프로그램에서 훈련받은 최강의 사이오닉 요원. 멩스크를 따라 자유의 아들에 합류했으나, 타소니스 전투에서 저그에게 버려지는 운명을 맞이한다.',
+          '연합의 유령 프로그램에서 훈련받은 최강의 사이오닉 요원. 멩스크를 따라 코랄의 후예에 합류했으나, 타소니스 전투에서 저그에게 버려지는 운명을 맞이한다.',
         portrait: 'kerrigan',
       },
     },
@@ -96,7 +96,7 @@ export const warlordThrax: Entity = {
 
 // ─── 프로토스 캐릭터 ───
 
-export const spymasterZira: Entity = {
+export const tassadar: Entity = {
   id: 'char-tassadar',
   typeId: 'character',
   name: '태사다르',
@@ -118,7 +118,7 @@ export const spymasterZira: Entity = {
   locationId: 'system-aiur',
 };
 
-export const generalKorr: Entity = {
+export const zeratul: Entity = {
   id: 'char-zeratul',
   typeId: 'character',
   name: '제라툴',
@@ -131,7 +131,7 @@ export const generalKorr: Entity = {
         role: '암흑 기사 족장',
         factionId: 'faction-protoss',
         backstory:
-          '수백 년간 추방당한 암흑 기사단의 족장. 공허의 에너지를 다루며, 저그 대뇌충을 처치해 초월체에게 아이어의 위치를 알려주는 비극적 실수를 저지른다.',
+          '수백 년간 추방당한 암흑 기사단의 족장. 공허의 에너지를 다루며, 정신체 자스를 처치해 초월체에게 아이어의 위치를 알려주는 비극적 실수를 저지른다.',
         portrait: 'zeratul',
       },
     },
@@ -140,7 +140,7 @@ export const generalKorr: Entity = {
   locationId: 'system-shakuras',
 };
 
-export const archonVexa: Entity = {
+export const fenix: Entity = {
   id: 'char-fenix',
   typeId: 'character',
   name: '피닉스',
@@ -153,7 +153,7 @@ export const archonVexa: Entity = {
         role: '기사단장',
         factionId: 'faction-protoss',
         backstory:
-          '프로토스 최고의 전사. 안티오크 전투에서 저그에게 치명상을 입었으나 용기병으로 부활했다. 불굴의 의지와 명예를 상징한다.',
+          '프로토스 최고의 전사. 안티오크 전투에서 저그에게 치명상을 입었으나 드라군으로 부활했다. 불굴의 의지와 명예를 상징한다.',
         portrait: 'fenix',
       },
     },
@@ -162,7 +162,7 @@ export const archonVexa: Entity = {
   locationId: 'system-aiur',
 };
 
-export const emissaryEcho: Entity = {
+export const aldaris: Entity = {
   id: 'char-aldaris',
   typeId: 'character',
   name: '알다리스',
@@ -186,7 +186,7 @@ export const emissaryEcho: Entity = {
 
 // ─── 저그 캐릭터 ───
 
-export const researcherPhi: Entity = {
+export const overmind: Entity = {
   id: 'char-overmind',
   typeId: 'character',
   name: '초월체',
@@ -208,39 +208,39 @@ export const researcherPhi: Entity = {
   locationId: 'system-char',
 };
 
-export const captainRex: Entity = {
-  id: 'char-duran',
+export const artanis: Entity = {
+  id: 'char-artanis',
   typeId: 'character',
-  name: '사미르 듀란',
-  tags: ['character', 'independent', 'mysterious'],
+  name: '아르타니스',
+  tags: ['character', 'military', 'protoss', 'templar'],
   components: {
     'character-info': {
       defId: 'character-info',
       values: {
-        species: '불명',
-        role: '용병 / 정체불명의 공작원',
-        factionId: '',
+        species: '프로토스',
+        role: '젊은 집행관',
+        factionId: 'faction-protoss',
         backstory:
-          '정체를 알 수 없는 인물. 테란 용병으로 활동하지만 진정한 목적은 수수께끼에 싸여 있다. 모든 세력의 그림자 속에서 암약한다.',
-        portrait: 'duran',
+          '프로토스의 젊은 집행관. 태사다르를 존경하며 그의 가르침을 따른다. 아이어 함락 후 프로토스의 재건을 이끌 차세대 지도자.',
+        portrait: 'artanis',
       },
     },
   },
-  stats: { loyalty: 10, competence: 90, ambition: 95 },
-  locationId: 'system-braxis',
+  stats: { loyalty: 85, competence: 80, ambition: 65 },
+  locationId: 'system-aiur',
 };
 
 export const characters: Entity[] = [
-  admiralChen,
-  ambassadorVoss,
-  drKowalski,
-  warlordThrax,
-  spymasterZira,
-  generalKorr,
-  archonVexa,
-  emissaryEcho,
-  researcherPhi,
-  captainRex,
+  raynor,
+  mengsk,
+  duke,
+  kerrigan,
+  tassadar,
+  zeratul,
+  fenix,
+  aldaris,
+  overmind,
+  artanis,
 ];
 
 // ─── NPC 행동 프로필 ───
@@ -290,6 +290,80 @@ export const npcProfiles: NPCBehaviorProfile[] = [
     ],
     aiPersonalityPrompt:
       '당신은 짐 레이너입니다. 정의감이 강하고 동료를 소중히 여기는 반란군 지도자입니다. 멩스크의 독재에 맞서 싸우면서도 인류의 생존을 최우선으로 합니다.',
+    useAI: true,
+  },
+  {
+    entityId: 'char-mengsk',
+    personality: [
+      { traitId: 'ambitious', name: '야심', intensity: 0.95 },
+      { traitId: 'charismatic', name: '카리스마', intensity: 0.85 },
+      { traitId: 'ruthless', name: '냉혹함', intensity: 0.9 },
+    ],
+    goals: [
+      {
+        id: 'goal-mengsk-1',
+        name: '자치령 절대 권력 장악',
+        priority: 100,
+        status: 'active',
+        completionConditions: [],
+      },
+      {
+        id: 'goal-mengsk-2',
+        name: '반란 세력 소탕',
+        priority: 85,
+        status: 'active',
+        completionConditions: [],
+        relatedEntities: ['char-raynor'],
+      },
+    ],
+    behaviorRules: [
+      {
+        id: 'mengsk-consolidate',
+        conditions: [{ type: 'stat-threshold', statId: 'stability', entityId: 'faction-terran', comparison: 'lt', value: 50 }],
+        actionTypeId: 'suppress',
+        targetStrategy: 'specific',
+        specificTargetId: 'faction-terran',
+        weight: 90,
+      },
+    ],
+    aiPersonalityPrompt:
+      '당신은 아크튜러스 멩스크입니다. 권력을 향한 끝없는 야망과 카리스마로 자치령을 세운 황제입니다. 목적을 위해서라면 어떤 희생도 감수합니다.',
+    useAI: true,
+  },
+  {
+    entityId: 'char-kerrigan',
+    personality: [
+      { traitId: 'determined', name: '결의', intensity: 0.9 },
+      { traitId: 'psionic', name: '사이오닉', intensity: 0.95 },
+      { traitId: 'conflicted', name: '갈등', intensity: 0.7 },
+    ],
+    goals: [
+      {
+        id: 'goal-kerrigan-1',
+        name: '임무 완수',
+        priority: 85,
+        status: 'active',
+        completionConditions: [],
+      },
+      {
+        id: 'goal-kerrigan-2',
+        name: '동료 보호',
+        priority: 90,
+        status: 'active',
+        completionConditions: [],
+      },
+    ],
+    behaviorRules: [
+      {
+        id: 'kerrigan-support',
+        conditions: [],
+        actionTypeId: 'support',
+        targetStrategy: 'highest-relation',
+        weight: 75,
+      },
+    ],
+    aiPersonalityPrompt:
+      '당신은 사라 케리건입니다. 연합의 유령 프로그램에서 훈련받은 최강의 사이오닉 요원입니다. 강인하지만 내면에 고독과 불신을 품고 있습니다.',
     useAI: true,
   },
   {
@@ -381,6 +455,178 @@ export const npcProfiles: NPCBehaviorProfile[] = [
     ],
     aiPersonalityPrompt:
       '당신은 태사다르입니다. 프로토스의 가장 고결한 기사로서 칼라의 가르침을 따르되, 진정한 정의를 위해 전통에 도전할 용기를 가지고 있습니다.',
+    useAI: true,
+  },
+  {
+    entityId: 'char-zeratul',
+    personality: [
+      { traitId: 'wise', name: '지혜', intensity: 0.9 },
+      { traitId: 'secretive', name: '은밀함', intensity: 0.85 },
+      { traitId: 'tormented', name: '고뇌', intensity: 0.75 },
+    ],
+    goals: [
+      {
+        id: 'goal-zeratul-1',
+        name: '저그의 비밀 파헤치기',
+        priority: 90,
+        status: 'active',
+        completionConditions: [],
+      },
+      {
+        id: 'goal-zeratul-2',
+        name: '암흑 기사단의 복권',
+        priority: 75,
+        status: 'active',
+        completionConditions: [],
+      },
+    ],
+    behaviorRules: [
+      {
+        id: 'zeratul-stealth',
+        conditions: [],
+        actionTypeId: 'infiltrate',
+        targetStrategy: 'lowest-relation',
+        weight: 80,
+      },
+    ],
+    aiPersonalityPrompt:
+      '당신은 제라툴입니다. 수백 년을 살아온 암흑 기사의 족장으로서 공허의 에너지를 다루며, 과거의 비극적 실수에 대한 무거운 죄책감을 안고 있습니다.',
+    useAI: true,
+  },
+  {
+    entityId: 'char-fenix',
+    personality: [
+      { traitId: 'honorable', name: '명예', intensity: 0.95 },
+      { traitId: 'fearless', name: '두려움 없음', intensity: 0.9 },
+      { traitId: 'steadfast', name: '불굴', intensity: 0.85 },
+    ],
+    goals: [
+      {
+        id: 'goal-fenix-1',
+        name: '아이어 방어',
+        priority: 95,
+        status: 'active',
+        completionConditions: [],
+      },
+    ],
+    behaviorRules: [
+      {
+        id: 'fenix-defend',
+        conditions: [{ type: 'stat-threshold', statId: 'military-power', entityTag: 'zerg', comparison: 'gt', value: 100 }],
+        actionTypeId: 'defend',
+        targetStrategy: 'specific',
+        specificTargetId: 'system-aiur',
+        weight: 90,
+      },
+    ],
+    aiPersonalityPrompt:
+      '당신은 피닉스입니다. 프로토스 최고의 전사로서 전사한 뒤 드라군으로 부활했습니다. 불굴의 의지로 명예를 위해 싸우며, 죽음조차 당신을 멈추지 못했습니다.',
+    useAI: true,
+  },
+  {
+    entityId: 'char-aldaris',
+    personality: [
+      { traitId: 'traditionalist', name: '전통주의', intensity: 0.95 },
+      { traitId: 'authoritarian', name: '권위주의', intensity: 0.85 },
+      { traitId: 'suspicious', name: '의심', intensity: 0.8 },
+    ],
+    goals: [
+      {
+        id: 'goal-aldaris-1',
+        name: '칼라의 수호',
+        priority: 100,
+        status: 'active',
+        completionConditions: [],
+      },
+      {
+        id: 'goal-aldaris-2',
+        name: '이단 척결',
+        priority: 85,
+        status: 'active',
+        completionConditions: [],
+        relatedEntities: ['char-tassadar'],
+      },
+    ],
+    behaviorRules: [
+      {
+        id: 'aldaris-oppose',
+        conditions: [{ type: 'tag-present', entityId: 'faction-protoss', tag: 'templar-schism' }],
+        actionTypeId: 'oppose',
+        targetStrategy: 'specific',
+        specificTargetId: 'char-tassadar',
+        weight: 85,
+      },
+    ],
+    aiPersonalityPrompt:
+      '당신은 알다리스입니다. 프로토스 의회의 보수파 심판관으로서 칼라의 전통을 목숨 걸고 수호합니다. 암흑 기사와의 어떤 타협도 용납하지 않습니다.',
+    useAI: true,
+  },
+  {
+    entityId: 'char-duke',
+    personality: [
+      { traitId: 'arrogant', name: '오만함', intensity: 0.8 },
+      { traitId: 'obedient', name: '복종적', intensity: 0.7 },
+      { traitId: 'competent', name: '유능함', intensity: 0.75 },
+    ],
+    goals: [
+      {
+        id: 'goal-duke-1',
+        name: '멩스크에 충성',
+        priority: 85,
+        status: 'active',
+        completionConditions: [],
+        relatedEntities: ['char-mengsk'],
+      },
+    ],
+    behaviorRules: [
+      {
+        id: 'duke-follow-orders',
+        conditions: [],
+        actionTypeId: 'attack',
+        targetStrategy: 'lowest-relation',
+        weight: 70,
+      },
+    ],
+    aiPersonalityPrompt:
+      '당신은 에드먼드 듀크 장군입니다. 자치령의 충실한 군 사령관으로서 멩스크의 명령을 철저히 수행합니다. 오만하지만 유능한 군인입니다.',
+    useAI: true,
+  },
+  {
+    entityId: 'char-artanis',
+    personality: [
+      { traitId: 'idealistic', name: '이상주의', intensity: 0.85 },
+      { traitId: 'dutiful', name: '의무감', intensity: 0.9 },
+      { traitId: 'hopeful', name: '희망', intensity: 0.8 },
+    ],
+    goals: [
+      {
+        id: 'goal-artanis-1',
+        name: '프로토스 통합',
+        priority: 90,
+        status: 'active',
+        completionConditions: [],
+      },
+      {
+        id: 'goal-artanis-2',
+        name: '태사다르의 유지 계승',
+        priority: 85,
+        status: 'active',
+        completionConditions: [],
+        relatedEntities: ['char-tassadar'],
+      },
+    ],
+    behaviorRules: [
+      {
+        id: 'artanis-unite',
+        conditions: [{ type: 'tag-present', entityId: 'faction-protoss', tag: 'templar-schism' }],
+        actionTypeId: 'negotiate',
+        targetStrategy: 'lowest-relation',
+        params: { topic: 'unity' },
+        weight: 85,
+      },
+    ],
+    aiPersonalityPrompt:
+      '당신은 아르타니스입니다. 젊지만 뛰어난 프로토스 집행관으로서, 태사다르의 정신을 이어받아 프로토스의 화합과 재건을 이끌어 나갑니다.',
     useAI: true,
   },
 ];

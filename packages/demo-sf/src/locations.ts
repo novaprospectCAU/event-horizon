@@ -4,7 +4,7 @@
 
 import type { Entity } from '@event-horizon/types';
 
-export const systemSol: Entity = {
+export const systemKorhal: Entity = {
   id: 'system-korhal',
   typeId: 'system',
   name: '코르할',
@@ -36,7 +36,7 @@ export const systemSol: Entity = {
   },
 };
 
-export const systemKethar: Entity = {
+export const systemAiur: Entity = {
   id: 'system-aiur',
   typeId: 'system',
   name: '아이어',
@@ -68,7 +68,7 @@ export const systemKethar: Entity = {
   },
 };
 
-export const systemNexus: Entity = {
+export const systemChar: Entity = {
   id: 'system-char',
   typeId: 'system',
   name: '차',
@@ -100,7 +100,7 @@ export const systemNexus: Entity = {
   },
 };
 
-export const systemHaven: Entity = {
+export const systemMarSara: Entity = {
   id: 'system-marsara',
   typeId: 'system',
   name: '마 사라',
@@ -124,7 +124,7 @@ export const systemHaven: Entity = {
   },
 };
 
-export const systemForge: Entity = {
+export const systemTarsonis: Entity = {
   id: 'system-tarsonis',
   typeId: 'system',
   name: '타소니스',
@@ -148,7 +148,7 @@ export const systemForge: Entity = {
   },
 };
 
-export const systemFrontier: Entity = {
+export const systemAntiga: Entity = {
   id: 'system-antiga',
   typeId: 'system',
   name: '안티가 프라임',
@@ -172,7 +172,7 @@ export const systemFrontier: Entity = {
   },
 };
 
-export const systemDeepReach: Entity = {
+export const systemShakuras: Entity = {
   id: 'system-shakuras',
   typeId: 'system',
   name: '샤쿠라스',
@@ -204,7 +204,7 @@ export const systemDeepReach: Entity = {
   },
 };
 
-export const systemAurora: Entity = {
+export const systemBraxis: Entity = {
   id: 'system-braxis',
   typeId: 'system',
   name: '브락시스',
@@ -229,12 +229,12 @@ export const systemAurora: Entity = {
 };
 
 export const locations: Entity[] = [
-  systemSol,
-  systemKethar,
-  systemNexus,
-  systemHaven,
-  systemForge,
-  systemFrontier,
-  systemDeepReach,
-  systemAurora,
+  systemKorhal,
+  systemAiur,
+  systemChar,
+  systemMarSara,
+  systemTarsonis,
+  systemAntiga,
+  systemShakuras,
+  systemBraxis,
 ];

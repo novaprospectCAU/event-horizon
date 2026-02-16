@@ -5,7 +5,7 @@
 import type { Entity } from '@event-horizon/types';
 
 /** 테란 자치령 - 인간, 군사 독재, 기술과 화력 중심 */
-export const terranConfederation: Entity = {
+export const terranDominion: Entity = {
   id: 'faction-terran',
   typeId: 'faction',
   name: '테란 자치령',
@@ -31,7 +31,7 @@ export const terranConfederation: Entity = {
 };
 
 /** 프로토스 - 고대 종족, 사이오닉 기술, 명예와 전통 중시 */
-export const kethariDominion: Entity = {
+export const protoss: Entity = {
   id: 'faction-protoss',
   typeId: 'faction',
   name: '프로토스',
@@ -57,7 +57,7 @@ export const kethariDominion: Entity = {
 };
 
 /** 저그 군단 - 생물학적 집합체, 동화와 진화, 초월체의 의지 */
-export const synthesisCollective: Entity = {
+export const zergSwarm: Entity = {
   id: 'faction-zerg',
   typeId: 'faction',
   name: '저그 군단',
@@ -82,4 +82,4 @@ export const synthesisCollective: Entity = {
   },
 };
 
-export const factions: Entity[] = [terranConfederation, kethariDominion, synthesisCollective];
+export const factions: Entity[] = [terranDominion, protoss, zergSwarm];
