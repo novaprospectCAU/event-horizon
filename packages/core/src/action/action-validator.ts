@@ -83,7 +83,8 @@ export class ActionValidator {
     // Check player can only act as their character
     if (action.phase === 'player-action' && state.playerEntityId) {
       if (action.performerId !== state.playerEntityId) {
-        errors.push(`Player can only perform actions as '${state.playerEntityId}'`);
+        const playerName = state.entities[state.playerEntityId]?.name ?? state.playerEntityId;
+        errors.push(`플레이어는 '${playerName}'(으)로만 행동할 수 있습니다.`);
       }
     }
 

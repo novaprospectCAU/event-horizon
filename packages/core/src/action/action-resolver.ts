@@ -56,7 +56,7 @@ export class ActionResolver {
         actionId: action.id,
         success: false,
         effects: [],
-        narrative: `Action failed: ${validation.errors.join('; ')}`,
+        narrative: `행동 실패: ${validation.errors.join('; ')}`,
       };
       this.eventBus.emit('action:resolved', { result });
       return { result, rngState: { ...state, rng: newRng } };
@@ -71,7 +71,7 @@ export class ActionResolver {
         actionId: action.id,
         success: true,
         effects: [],
-        narrative: `${action.performerId} performed ${action.typeId}`,
+        narrative: `${state.entities[action.performerId]?.name ?? action.performerId}이(가) ${this.registry.getActionTypeDef(action.typeId)?.name ?? action.typeId} 행동을 수행했습니다.`,
       };
       this.eventBus.emit('action:resolved', { result });
       return { result, rngState: { ...state, rng: newRng } };

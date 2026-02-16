@@ -66,7 +66,7 @@ export class GameController {
     this.sendAvailableActions();
     this.engineAdapter.emit(
       createNarrative(
-        '코프룰루 전쟁에 오신 것을 환영합니다. 당신은 테란 자치령을 지휘합니다. 코프룰루 구역이 당신의 결정을 기다리고 있습니다.',
+        '코프룰루 전쟁에 오신 것을 환영합니다. 당신은 마 사라 민병대 대장입니다. 변경 식민지의 운명이 당신의 손에 달려 있습니다.',
         'system',
       ),
     );
@@ -89,15 +89,18 @@ export class GameController {
       disabledReason?: string;
     }[] = [];
 
-    // Find all entities the player controls
-    const playerEntities = Object.values(state.entities).filter((e) => {
-      if (e.id === PLAYER_FACTION) return true;
-      const charInfo = e.components['character-info'];
-      if (charInfo && charInfo.values['factionId'] === PLAYER_FACTION) return true;
-      const fleetInfo = e.components['fleet'];
-      if (fleetInfo && fleetInfo.values['factionId'] === PLAYER_FACTION) return true;
-      return false;
-    });
+    // If playerEntityId is set, only show that character's actions
+    // Otherwise, show actions for all entities in the player faction
+    const playerEntities = state.playerEntityId
+      ? [state.entities[state.playerEntityId]].filter(Boolean)
+      : Object.values(state.entities).filter((e) => {
+          if (e.id === PLAYER_FACTION) return true;
+          const charInfo = e.components['character-info'];
+          if (charInfo && charInfo.values['factionId'] === PLAYER_FACTION) return true;
+          const fleetInfo = e.components['fleet'];
+          if (fleetInfo && fleetInfo.values['factionId'] === PLAYER_FACTION) return true;
+          return false;
+        });
 
     for (const entity of playerEntities) {
       const available = this.actionRegistry.getAvailableActions(state, entity.id);
