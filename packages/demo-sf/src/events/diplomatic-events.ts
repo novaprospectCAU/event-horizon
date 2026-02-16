@@ -1,14 +1,14 @@
 /**
- * SF Demo Events - diplomatic and political events.
+ * SF 데모 이벤트 - 외교 및 정치 이벤트.
  */
 
 import type { GameEvent } from '@event-horizon/types';
 
 export const diplomaticCrisis: GameEvent = {
   id: 'evt-diplomatic-crisis',
-  name: 'Diplomatic Crisis',
+  name: '외교 위기',
   description:
-    'Tensions between two major factions reach a breaking point. A diplomatic incident threatens to escalate into open conflict.',
+    '두 주요 세력 간의 긴장이 극에 달했다. 외교적 사건이 전면전으로 비화될 위기에 처해 있다.',
   triggers: [
     {
       type: 'relation-threshold',
@@ -23,32 +23,32 @@ export const diplomaticCrisis: GameEvent = {
   choices: [
     {
       id: 'crisis-negotiate',
-      text: 'Send a diplomatic envoy',
-      description: 'Attempt to de-escalate through negotiation.',
+      text: '외교 사절 파견',
+      description: '협상을 통해 긴장 완화를 시도한다.',
       effects: [
         { type: 'modify-relation', relationTypeId: 'diplomatic', amount: 15 },
         { type: 'modify-stat', entityTag: 'terran', statId: 'influence', amount: 10 },
       ],
-      resultText: 'The envoy manages to ease tensions, at least temporarily.',
+      resultText: '사절이 긴장을 완화하는 데 성공했다. 적어도 당분간은.',
     },
     {
       id: 'crisis-threaten',
-      text: 'Show of force',
-      description: 'Deploy military assets to demonstrate strength.',
+      text: '무력 시위',
+      description: '군사력을 전개하여 힘을 과시한다.',
       effects: [
         { type: 'modify-stat', entityTag: 'terran', statId: 'military-power', amount: 20 },
         { type: 'modify-relation', relationTypeId: 'diplomatic', amount: -10 },
       ],
-      resultText: 'Your show of force sends a clear message, but deepens the rift.',
+      resultText: '무력 시위는 명확한 메시지를 전달했지만, 관계의 균열은 더 깊어졌다.',
     },
     {
       id: 'crisis-ignore',
-      text: 'Let it blow over',
-      description: 'Focus on internal affairs and hope tensions ease naturally.',
+      text: '자연스럽게 지나가길 기다린다',
+      description: '내부 문제에 집중하고 긴장이 자연히 가라앉기를 바란다.',
       effects: [
         { type: 'modify-stat', entityTag: 'terran', statId: 'stability', amount: 5 },
       ],
-      resultText: 'You choose to avoid direct confrontation. Time will tell if this was wise.',
+      resultText: '직접적인 대립을 피하기로 했다. 이것이 현명한 선택이었을지는 시간이 말해줄 것이다.',
     },
   ],
   cooldown: 5,
@@ -59,9 +59,9 @@ export const diplomaticCrisis: GameEvent = {
 
 export const tradeAgreement: GameEvent = {
   id: 'evt-trade-agreement',
-  name: 'Trade Agreement Opportunity',
+  name: '교역 협정 기회',
   description:
-    'A neutral trade guild proposes a lucrative trade agreement that could benefit multiple factions.',
+    '중립 무역 길드가 여러 세력에 이로운 교역 협정을 제안했다.',
   triggers: [
     { type: 'turn-reached', turn: 3 },
     {
@@ -75,18 +75,18 @@ export const tradeAgreement: GameEvent = {
   choices: [
     {
       id: 'trade-accept',
-      text: 'Accept the agreement',
-      description: 'Sign the trade deal and boost economic cooperation.',
+      text: '협정 수락',
+      description: '교역 협정에 서명하고 경제 협력을 강화한다.',
       effects: [
         { type: 'modify-relation', relationTypeId: 'trade', amount: 25 },
         { type: 'modify-stat', entityTag: 'terran', statId: 'economic-power', amount: 30 },
       ],
-      resultText: 'The trade agreement is signed. Credits flow and prosperity grows.',
+      resultText: '교역 협정이 체결되었다. 자금이 흐르고 번영이 찾아온다.',
     },
     {
       id: 'trade-counter',
-      text: 'Counter-propose better terms',
-      description: 'Push for more favorable terms, risking the deal.',
+      text: '더 나은 조건으로 역제안',
+      description: '더 유리한 조건을 밀어붙이지만, 협상 결렬 위험이 있다.',
       conditions: [
         { type: 'stat-threshold', entityTag: 'terran', statId: 'influence', comparison: 'gte', value: 40 },
       ],
@@ -94,16 +94,16 @@ export const tradeAgreement: GameEvent = {
         { type: 'modify-stat', entityTag: 'terran', statId: 'economic-power', amount: 50 },
         { type: 'modify-stat', entityTag: 'terran', statId: 'influence', amount: -5 },
       ],
-      resultText: 'Your negotiators secure excellent terms. The other parties are less pleased.',
+      resultText: '협상단이 탁월한 조건을 확보했다. 상대방은 불만이지만.',
     },
     {
       id: 'trade-reject',
-      text: 'Decline the offer',
-      description: 'Maintain economic independence.',
+      text: '제안 거절',
+      description: '경제적 독립을 유지한다.',
       effects: [
         { type: 'modify-stat', entityTag: 'terran', statId: 'stability', amount: 5 },
       ],
-      resultText: 'You decline the trade agreement, choosing self-reliance.',
+      resultText: '교역 협정을 거절하고 자급자족을 선택했다.',
     },
   ],
   cooldown: 8,
@@ -113,8 +113,8 @@ export const tradeAgreement: GameEvent = {
 
 export const allianceProposal: GameEvent = {
   id: 'evt-alliance-proposal',
-  name: 'Alliance Proposal',
-  description: 'A faction offers a formal alliance against a common threat.',
+  name: '동맹 제안',
+  description: '한 세력이 공동의 위협에 대한 정식 동맹을 제안한다.',
   triggers: [
     {
       type: 'relation-threshold',
@@ -134,20 +134,20 @@ export const allianceProposal: GameEvent = {
   choices: [
     {
       id: 'alliance-accept',
-      text: 'Accept the alliance',
+      text: '동맹 수락',
       effects: [
         { type: 'modify-relation', relationTypeId: 'diplomatic', amount: 30 },
         { type: 'set-tag', entityTag: 'terran', tag: 'allied' },
       ],
-      resultText: 'A new alliance is forged. Together, you stand stronger.',
+      resultText: '새로운 동맹이 결성되었다. 함께라면 더 강하다.',
     },
     {
       id: 'alliance-decline',
-      text: 'Politely decline',
+      text: '정중히 거절',
       effects: [
         { type: 'modify-relation', relationTypeId: 'diplomatic', amount: -10 },
       ],
-      resultText: 'You maintain independence at the cost of a potential ally\'s goodwill.',
+      resultText: '독립을 유지하는 대가로 잠재적 동맹의 호의를 잃었다.',
     },
   ],
   cooldown: 10,

@@ -1,5 +1,5 @@
 /**
- * SF Demo Locations - star systems and notable places.
+ * SF 데모 장소 - 성계와 주요 지역.
  */
 
 import type { Entity } from '@event-horizon/types';
@@ -7,7 +7,7 @@ import type { Entity } from '@event-horizon/types';
 export const systemSol: Entity = {
   id: 'system-sol',
   typeId: 'system',
-  name: 'Sol System',
+  name: '태양계',
   tags: ['location', 'system', 'terran-space', 'capital'],
   components: {
     'star-system': {
@@ -39,7 +39,7 @@ export const systemSol: Entity = {
 export const systemKethar: Entity = {
   id: 'system-kethar',
   typeId: 'system',
-  name: 'Kethar Prime',
+  name: '케타르 프라임',
   tags: ['location', 'system', 'kethari-space', 'capital'],
   components: {
     'star-system': {
@@ -71,7 +71,7 @@ export const systemKethar: Entity = {
 export const systemNexus: Entity = {
   id: 'system-nexus',
   typeId: 'system',
-  name: 'Nexus Prime',
+  name: '넥서스 프라임',
   tags: ['location', 'system', 'synthesis-space', 'capital'],
   components: {
     'star-system': {
@@ -103,7 +103,7 @@ export const systemNexus: Entity = {
 export const systemHaven: Entity = {
   id: 'system-haven',
   typeId: 'system',
-  name: 'Haven Station',
+  name: '헤이븐 정거장',
   tags: ['location', 'system', 'neutral', 'trade-hub'],
   components: {
     'star-system': {
@@ -135,7 +135,7 @@ export const systemHaven: Entity = {
 export const systemForge: Entity = {
   id: 'system-forge',
   typeId: 'system',
-  name: 'The Forge',
+  name: '대장간',
   tags: ['location', 'system', 'kethari-space', 'military'],
   components: {
     'star-system': {
@@ -167,7 +167,7 @@ export const systemForge: Entity = {
 export const systemFrontier: Entity = {
   id: 'system-frontier',
   typeId: 'system',
-  name: 'Frontier',
+  name: '변경지대',
   tags: ['location', 'system', 'contested', 'border'],
   components: {
     'star-system': {
@@ -191,7 +191,7 @@ export const systemFrontier: Entity = {
 export const systemDeepReach: Entity = {
   id: 'system-deepreach',
   typeId: 'system',
-  name: 'Deep Reach',
+  name: '심연',
   tags: ['location', 'system', 'unexplored', 'precursor'],
   components: {
     'star-system': {
@@ -215,7 +215,7 @@ export const systemDeepReach: Entity = {
 export const systemAurora: Entity = {
   id: 'system-aurora',
   typeId: 'system',
-  name: 'Aurora',
+  name: '오로라',
   tags: ['location', 'system', 'terran-space'],
   components: {
     'star-system': {

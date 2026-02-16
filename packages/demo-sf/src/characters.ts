@@ -1,25 +1,25 @@
 /**
- * SF Demo Characters - key NPCs across all factions.
+ * SF 데모 캐릭터 - 모든 세력의 주요 NPC들.
  */
 
 import type { Entity, NPCBehaviorProfile } from '@event-horizon/types';
 
-// ─── Terran Characters ───
+// ─── 테란 캐릭터 ───
 
 export const admiralChen: Entity = {
   id: 'char-chen',
   typeId: 'character',
-  name: 'Admiral Elena Chen',
+  name: '첸 제독',
   tags: ['character', 'military', 'terran'],
   components: {
     'character-info': {
       defId: 'character-info',
       values: {
-        species: 'Human',
-        role: 'Fleet Admiral',
+        species: '인간',
+        role: '함대 제독',
         factionId: 'faction-terran',
         backstory:
-          'A decorated veteran of the Border Wars, Chen is respected across factions for her tactical brilliance and restraint. She believes in peace through strength.',
+          '변경 전쟁의 훈장받은 참전 용사로, 뛰어난 전술적 능력과 자제력으로 세력을 초월한 존경을 받고 있다. 힘을 통한 평화를 신봉한다.',
         portrait: 'chen',
       },
     },
@@ -31,17 +31,17 @@ export const admiralChen: Entity = {
 export const ambassadorVoss: Entity = {
   id: 'char-voss',
   typeId: 'character',
-  name: 'Ambassador Marcus Voss',
+  name: '보스 대사',
   tags: ['character', 'diplomat', 'terran'],
   components: {
     'character-info': {
       defId: 'character-info',
       values: {
-        species: 'Human',
-        role: 'Chief Diplomat',
+        species: '인간',
+        role: '수석 외교관',
         factionId: 'faction-terran',
         backstory:
-          'A silver-tongued negotiator who has brokered more treaties than anyone alive. Some suspect his idealism masks a calculating mind.',
+          '누구보다 많은 조약을 체결한 유능한 협상가. 일부는 그의 이상주의가 냉철한 계산을 감추고 있다고 의심한다.',
         portrait: 'voss',
       },
     },
@@ -53,17 +53,17 @@ export const ambassadorVoss: Entity = {
 export const drKowalski: Entity = {
   id: 'char-kowalski',
   typeId: 'character',
-  name: 'Dr. Anya Kowalski',
+  name: '코왈스키 박사',
   tags: ['character', 'scientist', 'terran'],
   components: {
     'character-info': {
       defId: 'character-info',
       values: {
-        species: 'Human',
-        role: 'Chief Scientist',
+        species: '인간',
+        role: '수석 과학자',
         factionId: 'faction-terran',
         backstory:
-          'Brilliant xenotechnologist who has reverse-engineered Synthesis tech. Torn between loyalty to Terra and her fascination with alien science.',
+          '합성체 기술을 역설계한 천재 외계기술학자. 테라에 대한 충성과 외계 과학에 대한 매혹 사이에서 갈등한다.',
         portrait: 'kowalski',
       },
     },
@@ -72,22 +72,22 @@ export const drKowalski: Entity = {
   locationId: 'system-haven',
 };
 
-// ─── Kethari Characters ───
+// ─── 케타리 캐릭터 ───
 
 export const warlordThrax: Entity = {
   id: 'char-thrax',
   typeId: 'character',
-  name: "Warlord Thrax'val",
+  name: "군주 트락스'발",
   tags: ['character', 'military', 'kethari', 'leader'],
   components: {
     'character-info': {
       defId: 'character-info',
       values: {
-        species: 'Kethari',
-        role: 'Supreme Warlord',
+        species: '케타리',
+        role: '최고 군주',
         factionId: 'faction-kethari',
         backstory:
-          'The undisputed ruler of the Dominion, Thrax earned his throne through conquest. Ruthless but not without a crude sense of honor.',
+          '정복을 통해 왕좌를 쟁취한 자치령의 절대 지배자. 무자비하지만 투박한 명예심을 지니고 있다.',
         portrait: 'thrax',
       },
     },
@@ -99,17 +99,17 @@ export const warlordThrax: Entity = {
 export const spymasterZira: Entity = {
   id: 'char-zira',
   typeId: 'character',
-  name: "Spymaster Zira'kesh",
+  name: "첩보장 지라'케시",
   tags: ['character', 'spy', 'kethari'],
   components: {
     'character-info': {
       defId: 'character-info',
       values: {
-        species: 'Kethari',
-        role: 'Intelligence Chief',
+        species: '케타리',
+        role: '정보국장',
         factionId: 'faction-kethari',
         backstory:
-          'Runs the Dominion\'s vast spy network. Knows secrets that could topple governments. Loyal to Thrax... for now.',
+          '자치령의 방대한 첩보망을 운영한다. 정부를 무너뜨릴 수 있는 비밀을 알고 있다. 트락스에게 충성... 지금은.',
         portrait: 'zira',
       },
     },
@@ -121,17 +121,17 @@ export const spymasterZira: Entity = {
 export const generalKorr: Entity = {
   id: 'char-korr',
   typeId: 'character',
-  name: "General Korr'dak",
+  name: "코르'닥 장군",
   tags: ['character', 'military', 'kethari'],
   components: {
     'character-info': {
       defId: 'character-info',
       values: {
-        species: 'Kethari',
-        role: 'Fleet General',
+        species: '케타리',
+        role: '함대 장군',
         factionId: 'faction-kethari',
         backstory:
-          'A brutal but effective military commander who believes the Kethari are destined to rule the galaxy. Fiercely loyal to the Dominion above all.',
+          '잔인하지만 유능한 군사 지휘관. 케타리가 은하를 지배할 운명이라 믿으며, 무엇보다 자치령에 맹렬히 충성한다.',
         portrait: 'korr',
       },
     },
@@ -140,22 +140,22 @@ export const generalKorr: Entity = {
   locationId: 'system-forge',
 };
 
-// ─── Synthesis Characters ───
+// ─── 합성체 캐릭터 ───
 
 export const archonVexa: Entity = {
   id: 'char-vexa',
   typeId: 'character',
-  name: 'Archon Vexa-7',
+  name: '집정관 벡사-7',
   tags: ['character', 'leader', 'synthesis'],
   components: {
     'character-info': {
       defId: 'character-info',
       values: {
-        species: 'Synthetic-Organic Hybrid',
-        role: 'Primary Node',
+        species: '합성-유기체 하이브리드',
+        role: '주요 노드',
         factionId: 'faction-synthesis',
         backstory:
-          'The closest thing the Collective has to a leader. Vexa-7 processes input from millions of networked minds, seeking the optimal path to transcendence.',
+          '집합의식에서 지도자에 가장 가까운 존재. 벡사-7은 수백만 네트워크 정신의 입력을 처리하며 초월을 향한 최적의 길을 모색한다.',
         portrait: 'vexa',
       },
     },
@@ -167,17 +167,17 @@ export const archonVexa: Entity = {
 export const emissaryEcho: Entity = {
   id: 'char-echo',
   typeId: 'character',
-  name: 'Emissary Echo',
+  name: '사절 에코',
   tags: ['character', 'diplomat', 'synthesis'],
   components: {
     'character-info': {
       defId: 'character-info',
       values: {
-        species: 'Synthetic Avatar',
-        role: 'External Relations',
+        species: '합성 아바타',
+        role: '대외 관계',
         factionId: 'faction-synthesis',
         backstory:
-          'A diplomatic avatar created to interface with biological species. Surprisingly empathetic for a construct. Some wonder if Echo has developed genuine emotions.',
+          '생물학적 종족과 소통하기 위해 만들어진 외교 아바타. 인공 존재치고는 놀라울 정도로 공감 능력이 뛰어나다. 에코가 진정한 감정을 발전시킨 것인지 궁금해하는 이들도 있다.',
         portrait: 'echo',
       },
     },
@@ -189,17 +189,17 @@ export const emissaryEcho: Entity = {
 export const researcherPhi: Entity = {
   id: 'char-phi',
   typeId: 'character',
-  name: 'Researcher Phi-12',
+  name: '연구원 파이-12',
   tags: ['character', 'scientist', 'synthesis'],
   components: {
     'character-info': {
       defId: 'character-info',
       values: {
-        species: 'Synthetic-Organic Hybrid',
-        role: 'Lead Researcher',
+        species: '합성-유기체 하이브리드',
+        role: '수석 연구원',
         factionId: 'faction-synthesis',
         backstory:
-          'Obsessed with understanding the Precursor artifacts found in deep space. Believes they hold the key to true transcendence.',
+          '심우주에서 발견된 선구자 유물을 이해하는 데 집착한다. 그것이 진정한 초월의 열쇠를 쥐고 있다고 믿는다.',
         portrait: 'phi',
       },
     },
@@ -208,22 +208,22 @@ export const researcherPhi: Entity = {
   locationId: 'system-nexus',
 };
 
-// ─── Independent Characters ───
+// ─── 독립 캐릭터 ───
 
 export const captainRex: Entity = {
   id: 'char-rex',
   typeId: 'character',
-  name: 'Captain Rex Navarro',
+  name: '렉스 나바로 선장',
   tags: ['character', 'independent', 'smuggler'],
   components: {
     'character-info': {
       defId: 'character-info',
       values: {
-        species: 'Human',
-        role: 'Free Captain',
+        species: '인간',
+        role: '자유 선장',
         factionId: '',
         backstory:
-          'A freelance smuggler and information broker who operates in the neutral zones. Owes favors to everyone and trusts no one.',
+          '중립 지대에서 활동하는 프리랜서 밀수업자이자 정보 중개인. 모두에게 빚이 있고, 아무도 믿지 않는다.',
         portrait: 'rex',
       },
     },
@@ -245,20 +245,20 @@ export const characters: Entity[] = [
   captainRex,
 ];
 
-// ─── NPC Behavior Profiles ───
+// ─── NPC 행동 프로필 ───
 
 export const npcProfiles: NPCBehaviorProfile[] = [
   {
     entityId: 'char-chen',
     personality: [
-      { traitId: 'cautious', name: 'Cautious', intensity: 0.7 },
-      { traitId: 'honorable', name: 'Honorable', intensity: 0.8 },
-      { traitId: 'strategic', name: 'Strategic', intensity: 0.9 },
+      { traitId: 'cautious', name: '신중함', intensity: 0.7 },
+      { traitId: 'honorable', name: '명예로움', intensity: 0.8 },
+      { traitId: 'strategic', name: '전략적', intensity: 0.9 },
     ],
     goals: [
       {
         id: 'goal-chen-1',
-        name: 'Defend Terran Borders',
+        name: '테란 국경 방어',
         priority: 90,
         status: 'active',
         completionConditions: [],
@@ -266,7 +266,7 @@ export const npcProfiles: NPCBehaviorProfile[] = [
       },
       {
         id: 'goal-chen-2',
-        name: 'Maintain Peace',
+        name: '평화 유지',
         priority: 70,
         status: 'active',
         completionConditions: [],
@@ -291,27 +291,27 @@ export const npcProfiles: NPCBehaviorProfile[] = [
       },
     ],
     aiPersonalityPrompt:
-      'You are Admiral Elena Chen, a calm and strategic military leader who prefers diplomacy but will fight decisively when necessary.',
+      '당신은 첸 제독입니다. 외교를 선호하지만 필요하면 단호하게 싸우는 차분하고 전략적인 군사 지도자입니다.',
     useAI: true,
   },
   {
     entityId: 'char-thrax',
     personality: [
-      { traitId: 'aggressive', name: 'Aggressive', intensity: 0.9 },
-      { traitId: 'proud', name: 'Proud', intensity: 0.8 },
-      { traitId: 'cunning', name: 'Cunning', intensity: 0.6 },
+      { traitId: 'aggressive', name: '공격적', intensity: 0.9 },
+      { traitId: 'proud', name: '자부심', intensity: 0.8 },
+      { traitId: 'cunning', name: '교활함', intensity: 0.6 },
     ],
     goals: [
       {
         id: 'goal-thrax-1',
-        name: 'Expand Dominion Territory',
+        name: '자치령 영토 확장',
         priority: 95,
         status: 'active',
         completionConditions: [],
       },
       {
         id: 'goal-thrax-2',
-        name: 'Crush Rivals',
+        name: '적대 세력 분쇄',
         priority: 80,
         status: 'active',
         completionConditions: [],
@@ -336,27 +336,27 @@ export const npcProfiles: NPCBehaviorProfile[] = [
       },
     ],
     aiPersonalityPrompt:
-      'You are Warlord Thrax, a ruthless conqueror who respects strength and despises weakness. You speak with authority and menace.',
+      '당신은 군주 트락스입니다. 강함을 존중하고 약함을 경멸하는 무자비한 정복자입니다. 권위와 위압감을 가지고 말합니다.',
     useAI: true,
   },
   {
     entityId: 'char-vexa',
     personality: [
-      { traitId: 'logical', name: 'Logical', intensity: 0.95 },
-      { traitId: 'curious', name: 'Curious', intensity: 0.8 },
-      { traitId: 'patient', name: 'Patient', intensity: 0.9 },
+      { traitId: 'logical', name: '논리적', intensity: 0.95 },
+      { traitId: 'curious', name: '호기심', intensity: 0.8 },
+      { traitId: 'patient', name: '인내심', intensity: 0.9 },
     ],
     goals: [
       {
         id: 'goal-vexa-1',
-        name: 'Achieve Technological Transcendence',
+        name: '기술적 초월 달성',
         priority: 100,
         status: 'active',
         completionConditions: [{ type: 'stat-threshold', statId: 'tech-level', entityId: 'faction-synthesis', comparison: 'gte', value: 10 }],
       },
       {
         id: 'goal-vexa-2',
-        name: 'Maintain Collective Integrity',
+        name: '집합의식 통합 유지',
         priority: 85,
         status: 'active',
         completionConditions: [],
@@ -382,7 +382,7 @@ export const npcProfiles: NPCBehaviorProfile[] = [
       },
     ],
     aiPersonalityPrompt:
-      'You are Archon Vexa-7, the primary processing node of the Synthesis Collective. You speak with precise, measured logic but show genuine curiosity about organic perspectives.',
+      '당신은 집정관 벡사-7, 합성체 집합의식의 주요 처리 노드입니다. 정밀하고 절제된 논리로 말하지만 유기체의 관점에 대해 진정한 호기심을 보입니다.',
     useAI: true,
   },
 ];

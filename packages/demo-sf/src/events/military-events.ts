@@ -1,14 +1,14 @@
 /**
- * SF Demo Events - military and conflict events.
+ * SF 데모 이벤트 - 군사 및 분쟁 이벤트.
  */
 
 import type { GameEvent } from '@event-horizon/types';
 
 export const borderIncursion: GameEvent = {
   id: 'evt-border-incursion',
-  name: 'Border Incursion',
+  name: '국경 침입',
   description:
-    'A Kethari patrol fleet has crossed into contested space. Is this a probe, a mistake, or the start of an invasion?',
+    '케타리 순찰 함대가 분쟁 우주 영역으로 진입했다. 정찰인가, 실수인가, 침공의 시작인가?',
   triggers: [
     {
       type: 'stat-threshold',
@@ -32,32 +32,32 @@ export const borderIncursion: GameEvent = {
   choices: [
     {
       id: 'incursion-confront',
-      text: 'Confront the intruders',
-      description: 'Send a fleet to intercept and challenge the Kethari patrol.',
+      text: '침입자에 맞서다',
+      description: '함대를 보내 케타리 순찰대를 요격하고 대항한다.',
       effects: [
         { type: 'modify-stat', entityId: 'faction-terran', statId: 'military-power', amount: -10 },
         { type: 'modify-relation', relationTypeId: 'diplomatic', sourceId: 'faction-terran', targetId: 'faction-kethari', amount: -15 },
         { type: 'modify-stat', entityId: 'system-frontier', statId: 'defense-level', amount: 20 },
       ],
-      resultText: 'Your fleet intercepts the Kethari patrol. After a tense standoff, they withdraw, but relations have deteriorated.',
+      resultText: '아군 함대가 케타리 순찰대를 요격했다. 긴장된 대치 끝에 그들은 철수했지만, 관계는 악화되었다.',
     },
     {
       id: 'incursion-observe',
-      text: 'Monitor silently',
-      description: 'Track the incursion without engaging.',
+      text: '조용히 감시',
+      description: '교전 없이 침입을 추적한다.',
       effects: [
         { type: 'modify-stat', entityId: 'faction-terran', statId: 'influence', amount: -5 },
       ],
-      resultText: 'You observe the Kethari patrol from a distance. They survey the area and leave. Your inaction is noted.',
+      resultText: '멀리서 케타리 순찰대를 관찰했다. 그들은 지역을 정찰한 후 떠났다. 당신의 무대응이 주목받았다.',
     },
     {
       id: 'incursion-diplomacy',
-      text: 'Demand an explanation through diplomatic channels',
+      text: '외교 채널을 통해 해명 요구',
       effects: [
         { type: 'modify-relation', relationTypeId: 'diplomatic', sourceId: 'faction-terran', targetId: 'faction-kethari', amount: 5 },
         { type: 'modify-stat', entityId: 'faction-terran', statId: 'influence', amount: 5 },
       ],
-      resultText: 'The Kethari dismiss it as a "navigational error." Nobody believes them, but the gesture buys time.',
+      resultText: '케타리 측은 "항법 오류"라고 일축했다. 아무도 믿지 않지만, 이 제스처는 시간을 벌어주었다.',
     },
   ],
   cooldown: 4,
@@ -68,8 +68,8 @@ export const borderIncursion: GameEvent = {
 
 export const pirateRaid: GameEvent = {
   id: 'evt-pirate-raid',
-  name: 'Pirate Raid on Trade Route',
-  description: 'Pirates have attacked a major trade convoy near Haven Station.',
+  name: '교역로 해적 습격',
+  description: '해적들이 헤이븐 정거장 인근의 주요 교역 호송대를 공격했다.',
   triggers: [
     { type: 'random-chance', chance: 0.15 },
     { type: 'turn-reached', turn: 2 },
@@ -80,31 +80,31 @@ export const pirateRaid: GameEvent = {
   choices: [
     {
       id: 'pirate-hunt',
-      text: 'Send a patrol fleet to hunt the pirates',
+      text: '순찰 함대를 보내 해적 소탕',
       effects: [
         { type: 'modify-stat', entityId: 'faction-terran', statId: 'military-power', amount: -5 },
         { type: 'modify-stat', entityId: 'system-haven', statId: 'defense-level', amount: 15 },
         { type: 'modify-stat', entityId: 'faction-terran', statId: 'influence', amount: 10 },
       ],
-      resultText: 'Your fleet hunts down the pirates. Haven Station is grateful for the protection.',
+      resultText: '아군 함대가 해적을 소탕했다. 헤이븐 정거장은 보호에 감사해한다.',
     },
     {
       id: 'pirate-negotiate',
-      text: 'Hire the pirates as privateers',
-      description: 'Turn the pirates into allies... of a sort.',
+      text: '해적을 사략선으로 고용',
+      description: '해적을 동맹으로... 일종의.',
       effects: [
         { type: 'modify-stat', entityId: 'faction-terran', statId: 'economic-power', amount: -15 },
         { type: 'modify-stat', entityId: 'faction-terran', statId: 'influence', amount: -5 },
       ],
-      resultText: 'The pirates accept your coin. They\'ll work for you now, but everyone knows they\'ll turn on you if the price is right.',
+      resultText: '해적들이 보수를 받아들였다. 이제 당신 편이지만, 더 높은 값을 부르면 언제든 배신할 것이다.',
     },
     {
       id: 'pirate-ignore',
-      text: 'Not our problem',
+      text: '우리 일이 아니다',
       effects: [
         { type: 'modify-stat', entityId: 'faction-terran', statId: 'influence', amount: -10 },
       ],
-      resultText: 'Haven Station takes note of your indifference. Trust in the Confederation wanes.',
+      resultText: '헤이븐 정거장은 당신의 무관심을 기억한다. 연방에 대한 신뢰가 줄어든다.',
     },
   ],
   cooldown: 3,
@@ -114,8 +114,8 @@ export const pirateRaid: GameEvent = {
 
 export const fleetMutiny: GameEvent = {
   id: 'evt-fleet-mutiny',
-  name: 'Fleet Mutiny',
-  description: 'Low morale and poor conditions have sparked a mutiny in one of your fleets.',
+  name: '함대 반란',
+  description: '낮은 사기와 열악한 환경이 함대 내 반란을 촉발했다.',
   triggers: [
     {
       type: 'stat-threshold',
@@ -131,22 +131,22 @@ export const fleetMutiny: GameEvent = {
   choices: [
     {
       id: 'mutiny-negotiate',
-      text: 'Negotiate with the mutineers',
+      text: '반란군과 협상',
       effects: [
         { type: 'modify-stat', entityTag: 'fleet', statId: 'fleet-morale', amount: 25 },
         { type: 'modify-stat', entityTag: 'terran', statId: 'stability', amount: -5 },
       ],
-      resultText: 'You address the fleet\'s grievances. Morale improves, but some see this as weakness.',
+      resultText: '함대의 불만을 해결했다. 사기가 회복되었지만, 일부는 이를 약함으로 본다.',
     },
     {
       id: 'mutiny-crush',
-      text: 'Crush the mutiny by force',
+      text: '무력으로 반란 진압',
       effects: [
         { type: 'modify-stat', entityTag: 'fleet', statId: 'fleet-strength', amount: -30 },
         { type: 'modify-stat', entityTag: 'fleet', statId: 'fleet-morale', amount: 10 },
         { type: 'modify-stat', entityTag: 'terran', statId: 'stability', amount: 5 },
       ],
-      resultText: 'The mutiny is put down with force. Order is restored, but at a terrible cost.',
+      resultText: '반란이 무력으로 진압되었다. 질서는 회복되었지만, 끔찍한 대가를 치렀다.',
     },
   ],
   cooldown: 6,
@@ -157,8 +157,8 @@ export const fleetMutiny: GameEvent = {
 
 export const armsRace: GameEvent = {
   id: 'evt-arms-race',
-  name: 'Galactic Arms Race',
-  description: 'Intelligence reports indicate all factions are rapidly building up their military forces.',
+  name: '은하 군비 경쟁',
+  description: '정보 보고에 따르면 모든 세력이 급속히 군사력을 증강하고 있다.',
   triggers: [
     { type: 'turn-reached', turn: 8 },
     { type: 'stat-threshold', entityId: 'faction-kethari', statId: 'military-power', comparison: 'gte', value: 200 },
@@ -169,30 +169,30 @@ export const armsRace: GameEvent = {
   choices: [
     {
       id: 'arms-join',
-      text: 'Accelerate our own military buildup',
+      text: '우리도 군비 증강 가속',
       effects: [
         { type: 'modify-stat', entityId: 'faction-terran', statId: 'military-power', amount: 40 },
         { type: 'modify-stat', entityId: 'faction-terran', statId: 'economic-power', amount: -30 },
       ],
-      resultText: 'You pour resources into the military. Your fleets grow, but your economy strains.',
+      resultText: '군사에 자원을 쏟아부었다. 함대는 성장하지만 경제는 압박받는다.',
     },
     {
       id: 'arms-disarm',
-      text: 'Propose galactic disarmament talks',
+      text: '은하 군축 회담 제안',
       effects: [
         { type: 'modify-stat', entityId: 'faction-terran', statId: 'influence', amount: 20 },
         { type: 'modify-relation', relationTypeId: 'diplomatic', amount: 10 },
       ],
-      resultText: 'Your proposal is met with skepticism, but some appreciate the gesture.',
+      resultText: '제안은 회의적인 반응을 받았지만, 일부는 이 제스처를 높이 평가한다.',
     },
     {
       id: 'arms-tech',
-      text: 'Focus on qualitative superiority through research',
+      text: '연구를 통한 질적 우위 추구',
       effects: [
         { type: 'modify-stat', entityId: 'faction-terran', statId: 'tech-level', amount: 1 },
         { type: 'modify-stat', entityId: 'faction-terran', statId: 'economic-power', amount: -20 },
       ],
-      resultText: 'Your scientists achieve a breakthrough. Quality over quantity.',
+      resultText: '과학자들이 돌파구를 달성했다. 양보다 질.',
     },
   ],
   cooldown: 10,

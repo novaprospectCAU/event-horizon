@@ -1,83 +1,83 @@
 /**
- * SF Demo World Schema - defines a space-faring civilization simulation.
- * Three factions compete for control of star systems through diplomacy, trade, and combat.
+ * SF 데모 월드 스키마 - 우주 문명 시뮬레이션 정의.
+ * 세 세력이 외교, 무역, 전투를 통해 성계 지배권을 놓고 경쟁한다.
  */
 
 import type { WorldSchema } from '@event-horizon/types';
 
 export const sfSchema: WorldSchema = {
   id: 'sf-cosmos',
-  name: 'Cosmic Frontier',
+  name: '우주 개척자',
   version: '0.1.0',
   description:
-    'A space opera simulation where three factions vie for dominance across the stars through diplomacy, trade, espionage, and fleet warfare.',
+    '세 세력이 외교, 무역, 첩보, 함대전을 통해 은하계 패권을 다투는 스페이스 오페라 시뮬레이션.',
 
   components: [
     {
       id: 'faction-info',
-      name: 'Faction Info',
-      description: 'Core faction data',
+      name: '세력 정보',
+      description: '핵심 세력 데이터',
       fields: [
-        { name: 'ideology', type: 'string', description: 'Core governing ideology' },
-        { name: 'government', type: 'string', description: 'Form of government' },
-        { name: 'homeSystemId', type: 'string', description: 'Home star system' },
-        { name: 'color', type: 'string', description: 'Faction display color' },
+        { name: 'ideology', type: 'string', description: '핵심 통치 이념' },
+        { name: 'government', type: 'string', description: '정부 형태' },
+        { name: 'homeSystemId', type: 'string', description: '본거지 성계' },
+        { name: 'color', type: 'string', description: '세력 표시 색상' },
       ],
     },
     {
       id: 'character-info',
-      name: 'Character Info',
-      description: 'Character biographical data',
+      name: '캐릭터 정보',
+      description: '캐릭터 전기 데이터',
       fields: [
-        { name: 'species', type: 'string', description: 'Species/race' },
-        { name: 'role', type: 'string', description: 'Role or rank' },
-        { name: 'factionId', type: 'string', description: 'Affiliated faction' },
-        { name: 'backstory', type: 'string', description: 'Character background' },
-        { name: 'portrait', type: 'string', description: 'Portrait image key' },
+        { name: 'species', type: 'string', description: '종족' },
+        { name: 'role', type: 'string', description: '직위 또는 역할' },
+        { name: 'factionId', type: 'string', description: '소속 세력' },
+        { name: 'backstory', type: 'string', description: '캐릭터 배경 이야기' },
+        { name: 'portrait', type: 'string', description: '초상화 이미지 키' },
       ],
     },
     {
       id: 'star-system',
-      name: 'Star System',
-      description: 'Star system properties',
+      name: '성계',
+      description: '성계 속성',
       fields: [
-        { name: 'starType', type: 'string', description: 'Type of star (G, K, M, etc.)' },
-        { name: 'planets', type: 'number', description: 'Number of planets' },
-        { name: 'controllerId', type: 'string', description: 'Controlling faction ID' },
+        { name: 'starType', type: 'string', description: '항성 유형 (G, K, M 등)' },
+        { name: 'planets', type: 'number', description: '행성 수' },
+        { name: 'controllerId', type: 'string', description: '지배 세력 ID' },
         { name: 'contested', type: 'boolean', defaultValue: false },
-        { name: 'coordinates', type: 'record', description: '{ x, y } map position' },
+        { name: 'coordinates', type: 'record', description: '{ x, y } 맵 좌표' },
       ],
     },
     {
       id: 'fleet',
-      name: 'Fleet',
-      description: 'Military fleet composition',
+      name: '함대',
+      description: '군사 함대 편성',
       fields: [
-        { name: 'ships', type: 'number', description: 'Number of ships' },
-        { name: 'fleetType', type: 'string', description: 'patrol | strike | defense | expedition' },
-        { name: 'commanderId', type: 'string', description: 'Fleet commander entity ID' },
-        { name: 'factionId', type: 'string', description: 'Owning faction' },
+        { name: 'ships', type: 'number', description: '함선 수' },
+        { name: 'fleetType', type: 'string', description: '순찰 | 타격 | 방어 | 탐사' },
+        { name: 'commanderId', type: 'string', description: '함대 사령관 엔티티 ID' },
+        { name: 'factionId', type: 'string', description: '소속 세력' },
       ],
     },
     {
       id: 'station',
-      name: 'Station',
-      description: 'Space station or outpost',
+      name: '정거장',
+      description: '우주 정거장 또는 전초기지',
       fields: [
-        { name: 'stationType', type: 'string', description: 'trade | military | research | diplomatic' },
-        { name: 'capacity', type: 'number', description: 'Operational capacity' },
-        { name: 'ownerId', type: 'string', description: 'Owning faction' },
+        { name: 'stationType', type: 'string', description: '무역 | 군사 | 연구 | 외교' },
+        { name: 'capacity', type: 'number', description: '운영 용량' },
+        { name: 'ownerId', type: 'string', description: '소유 세력' },
       ],
     },
     {
       id: 'trade-route',
-      name: 'Trade Route',
-      description: 'Trade route between two locations',
+      name: '교역로',
+      description: '두 성계 간의 교역로',
       fields: [
         { name: 'fromSystemId', type: 'string' },
         { name: 'toSystemId', type: 'string' },
-        { name: 'goods', type: 'string[]', description: 'Types of goods traded' },
-        { name: 'volume', type: 'number', description: 'Trade volume per turn' },
+        { name: 'goods', type: 'string[]', description: '거래 물품 종류' },
+        { name: 'volume', type: 'number', description: '턴당 교역량' },
       ],
     },
   ],
@@ -85,16 +85,16 @@ export const sfSchema: WorldSchema = {
   entityTypes: [
     {
       id: 'faction',
-      name: 'Faction',
-      description: 'A major political faction',
+      name: '세력',
+      description: '주요 정치 세력',
       requiredComponents: ['faction-info'],
       optionalComponents: [],
       defaultTags: ['faction', 'major-power'],
     },
     {
       id: 'character',
-      name: 'Character',
-      description: 'A person in the galaxy',
+      name: '캐릭터',
+      description: '은하계의 인물',
       requiredComponents: ['character-info'],
       optionalComponents: [],
       defaultTags: ['character'],
@@ -102,16 +102,16 @@ export const sfSchema: WorldSchema = {
     },
     {
       id: 'system',
-      name: 'Star System',
-      description: 'A star system with planets',
+      name: '성계',
+      description: '행성이 있는 항성계',
       requiredComponents: ['star-system'],
       optionalComponents: ['station'],
       defaultTags: ['location', 'system'],
     },
     {
       id: 'fleet',
-      name: 'Fleet',
-      description: 'A military fleet',
+      name: '함대',
+      description: '군사 함대',
       requiredComponents: ['fleet'],
       optionalComponents: [],
       defaultTags: ['military', 'fleet'],
@@ -120,10 +120,10 @@ export const sfSchema: WorldSchema = {
   ],
 
   stats: [
-    // Faction stats
+    // 세력 능력치
     {
       id: 'military-power',
-      name: 'Military Power',
+      name: '군사력',
       category: 'faction',
       min: 0,
       max: 1000,
@@ -132,7 +132,7 @@ export const sfSchema: WorldSchema = {
     },
     {
       id: 'economic-power',
-      name: 'Economic Power',
+      name: '경제력',
       category: 'faction',
       min: 0,
       max: 1000,
@@ -141,7 +141,7 @@ export const sfSchema: WorldSchema = {
     },
     {
       id: 'tech-level',
-      name: 'Technology Level',
+      name: '기술 수준',
       category: 'faction',
       min: 1,
       max: 10,
@@ -150,7 +150,7 @@ export const sfSchema: WorldSchema = {
     },
     {
       id: 'influence',
-      name: 'Influence',
+      name: '영향력',
       category: 'faction',
       min: 0,
       max: 500,
@@ -159,7 +159,7 @@ export const sfSchema: WorldSchema = {
     },
     {
       id: 'stability',
-      name: 'Internal Stability',
+      name: '내부 안정도',
       category: 'faction',
       min: 0,
       max: 100,
@@ -167,10 +167,10 @@ export const sfSchema: WorldSchema = {
       decayPerTurn: -1,
       applicableTo: ['faction'],
     },
-    // Character stats
+    // 캐릭터 능력치
     {
       id: 'loyalty',
-      name: 'Loyalty',
+      name: '충성도',
       category: 'character',
       min: 0,
       max: 100,
@@ -179,7 +179,7 @@ export const sfSchema: WorldSchema = {
     },
     {
       id: 'competence',
-      name: 'Competence',
+      name: '역량',
       category: 'character',
       min: 0,
       max: 100,
@@ -188,17 +188,17 @@ export const sfSchema: WorldSchema = {
     },
     {
       id: 'ambition',
-      name: 'Ambition',
+      name: '야망',
       category: 'character',
       min: 0,
       max: 100,
       defaultValue: 50,
       applicableTo: ['character'],
     },
-    // Fleet stats
+    // 함대 능력치
     {
       id: 'fleet-morale',
-      name: 'Fleet Morale',
+      name: '함대 사기',
       category: 'military',
       min: 0,
       max: 100,
@@ -208,17 +208,17 @@ export const sfSchema: WorldSchema = {
     },
     {
       id: 'fleet-strength',
-      name: 'Fleet Strength',
+      name: '함대 전투력',
       category: 'military',
       min: 0,
       max: 500,
       defaultValue: 100,
       applicableTo: ['fleet'],
     },
-    // System stats
+    // 성계 능력치
     {
       id: 'population',
-      name: 'Population',
+      name: '인구',
       category: 'system',
       min: 0,
       max: 10000,
@@ -227,7 +227,7 @@ export const sfSchema: WorldSchema = {
     },
     {
       id: 'resources',
-      name: 'Resources',
+      name: '자원',
       category: 'system',
       min: 0,
       max: 1000,
@@ -236,7 +236,7 @@ export const sfSchema: WorldSchema = {
     },
     {
       id: 'defense-level',
-      name: 'Defense Level',
+      name: '방어 수준',
       category: 'system',
       min: 0,
       max: 100,
@@ -248,8 +248,8 @@ export const sfSchema: WorldSchema = {
   relationTypes: [
     {
       id: 'diplomatic',
-      name: 'Diplomatic Relations',
-      description: 'Political relationship between factions',
+      name: '외교 관계',
+      description: '세력 간 정치적 관계',
       directed: false,
       minWeight: -100,
       maxWeight: 100,
@@ -259,8 +259,8 @@ export const sfSchema: WorldSchema = {
     },
     {
       id: 'trade',
-      name: 'Trade Relations',
-      description: 'Economic trade relationship',
+      name: '교역 관계',
+      description: '경제적 교역 관계',
       directed: false,
       minWeight: 0,
       maxWeight: 100,
@@ -269,8 +269,8 @@ export const sfSchema: WorldSchema = {
     },
     {
       id: 'loyalty-to',
-      name: 'Loyalty',
-      description: "A character's loyalty to a faction",
+      name: '충성',
+      description: '캐릭터의 세력에 대한 충성도',
       directed: true,
       minWeight: -100,
       maxWeight: 100,
@@ -279,8 +279,8 @@ export const sfSchema: WorldSchema = {
     },
     {
       id: 'personal',
-      name: 'Personal Relationship',
-      description: 'Personal feelings between characters',
+      name: '개인적 관계',
+      description: '캐릭터 간의 개인적 감정',
       directed: true,
       minWeight: -100,
       maxWeight: 100,
@@ -290,8 +290,8 @@ export const sfSchema: WorldSchema = {
     },
     {
       id: 'command',
-      name: 'Command',
-      description: 'Military command relationship',
+      name: '지휘',
+      description: '군사 지휘 관계',
       directed: true,
       minWeight: 0,
       maxWeight: 100,
@@ -303,8 +303,8 @@ export const sfSchema: WorldSchema = {
   actionTypes: [
     {
       id: 'negotiate',
-      name: 'Negotiate',
-      description: 'Attempt diplomatic negotiation',
+      name: '협상',
+      description: '외교 협상 시도',
       performerTypes: ['character'],
       targetTypes: ['character'],
       allowedPhases: ['player-action', 'npc-action'],
@@ -314,16 +314,16 @@ export const sfSchema: WorldSchema = {
     },
     {
       id: 'move-fleet',
-      name: 'Move Fleet',
-      description: 'Move a fleet to a new system',
+      name: '함대 이동',
+      description: '함대를 새로운 성계로 이동',
       performerTypes: ['fleet'],
       targetTypes: ['system'],
       allowedPhases: ['player-action', 'npc-action'],
     },
     {
       id: 'attack',
-      name: 'Attack',
-      description: 'Attack a fleet or system',
+      name: '공격',
+      description: '함대 또는 성계를 공격',
       performerTypes: ['fleet'],
       targetTypes: ['fleet', 'system'],
       allowedPhases: ['player-action', 'npc-action'],
@@ -331,8 +331,8 @@ export const sfSchema: WorldSchema = {
     },
     {
       id: 'trade',
-      name: 'Establish Trade',
-      description: 'Establish or boost a trade route',
+      name: '교역 개시',
+      description: '교역로를 개설하거나 강화',
       performerTypes: ['faction'],
       targetTypes: ['faction'],
       allowedPhases: ['player-action', 'npc-action'],
@@ -340,16 +340,16 @@ export const sfSchema: WorldSchema = {
     },
     {
       id: 'research',
-      name: 'Research',
-      description: 'Invest in technology research',
+      name: '연구',
+      description: '기술 연구에 투자',
       performerTypes: ['faction'],
       allowedPhases: ['player-action', 'npc-action'],
       params: [{ name: 'investment', type: 'number', min: 10, max: 100 }],
     },
     {
       id: 'espionage',
-      name: 'Espionage',
-      description: 'Conduct espionage against another faction',
+      name: '첩보',
+      description: '다른 세력에 대한 첩보 활동',
       performerTypes: ['character'],
       targetTypes: ['faction'],
       allowedPhases: ['player-action', 'npc-action'],
@@ -357,16 +357,16 @@ export const sfSchema: WorldSchema = {
     },
     {
       id: 'rally',
-      name: 'Rally',
-      description: 'Rally support to improve stability or morale',
+      name: '결집',
+      description: '안정도 또는 사기를 높이기 위한 지지 결집',
       performerTypes: ['character'],
       targetTypes: ['faction', 'fleet'],
       allowedPhases: ['player-action', 'npc-action'],
     },
     {
       id: 'build-fleet',
-      name: 'Build Fleet',
-      description: 'Commission a new fleet',
+      name: '함대 건조',
+      description: '새로운 함대 건조 명령',
       performerTypes: ['faction'],
       targetTypes: ['system'],
       allowedPhases: ['player-action', 'npc-action'],
@@ -379,16 +379,16 @@ export const sfSchema: WorldSchema = {
   ],
 
   phases: [
-    { id: 'player-action', name: 'Player Action', type: 'player-action', order: 0 },
-    { id: 'npc-action', name: 'NPC Action', type: 'npc-action', order: 1 },
-    { id: 'event-resolution', name: 'Event Resolution', type: 'event-resolution', order: 2 },
-    { id: 'world-update', name: 'World Update', type: 'world-update', order: 3 },
+    { id: 'player-action', name: '플레이어 행동', type: 'player-action', order: 0 },
+    { id: 'npc-action', name: 'NPC 행동', type: 'npc-action', order: 1 },
+    { id: 'event-resolution', name: '이벤트 처리', type: 'event-resolution', order: 2 },
+    { id: 'world-update', name: '세계 갱신', type: 'world-update', order: 3 },
   ],
 
   config: {
     aiMode: 'assist',
     timeUnit: 'cycle',
-    turnLabel: 'Galactic Cycle',
+    turnLabel: '은하 주기',
     activeModules: ['diplomacy', 'military', 'trade', 'espionage', 'narrative'],
     rngSeed: 42,
   },
