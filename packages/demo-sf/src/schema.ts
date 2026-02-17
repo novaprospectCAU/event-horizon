@@ -311,6 +311,14 @@ export const sfSchema: WorldSchema = {
 
   actionTypes: [
     {
+      id: 'contact',
+      name: '접촉 시도',
+      description: '처음 만나는 인물에게 접촉을 시도한다',
+      performerTypes: ['character'],
+      targetTypes: ['character'],
+      allowedPhases: ['player-action', 'npc-action'],
+    },
+    {
       id: 'negotiate',
       name: '협상',
       description: '외교 협상 시도',
